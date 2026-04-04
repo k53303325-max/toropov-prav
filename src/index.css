@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0a0a0b;
+  --color-ink-muted: #52525b;
+  --color-surface: #fafafa;
+  --color-surface-elevated: #ffffff;
+  --color-border: #e4e4e7;
+  --color-accent: #3b5bdb;
+  --color-accent-soft: #e8edff;
+  --color-mint: #14b8a6;
+  --color-mint-soft: #ccfbf1;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 4px 12px rgb(0 0 0 / 0.08), 0 16px 40px rgb(59 91 219 / 0.12);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[var(--color-surface)] text-[var(--color-ink-muted)] antialiased;
+    font-family: var(--font-body);
+  }
+}
+
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgb(59 91 219 / 0.18), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgb(20 184 166 / 0.12), transparent),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgb(59 91 219 / 0.08), transparent);
+}
+
+.gradient-border {
+  background: linear-gradient(135deg, rgb(59 91 219 / 0.35), rgb(20 184 166 / 0.25));
+  padding: 1px;
+  border-radius: 1rem;
+}
+
+.gradient-border-inner {
+  @apply rounded-[15px] bg-[var(--color-surface-elevated)];
+}
