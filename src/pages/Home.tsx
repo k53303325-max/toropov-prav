@@ -24,14 +24,16 @@ export function Home() {
       />
 
       <section className="gradient-mesh relative overflow-hidden border-b border-[var(--color-border)]">
-        <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32 lg:py-40">
+        <div className="w-full px-4 py-24 text-center sm:px-8 lg:px-12 sm:py-32 lg:py-40">
           <FadeIn>
             <Link
               to="/legal-design"
-              className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-elevated)]/90 px-4 py-2.5 text-sm font-medium text-[var(--color-accent)] shadow-sm backdrop-blur-sm transition hover:border-[var(--color-accent)]/50"
+              className="inline-flex max-w-full items-center gap-2 rounded-full border border-[var(--color-pill-border)] bg-[var(--color-surface)] px-5 py-2.5 text-sm font-medium tracking-tight text-[var(--color-accent)] transition hover:border-[var(--color-accent)]/35 hover:bg-[var(--color-surface-elevated)]"
             >
-              <span>Legal Design — документы, которые читают</span>
-              <span aria-hidden>→</span>
+              <span className="text-left">Legal Design — документы, которые читают</span>
+              <span aria-hidden className="shrink-0 opacity-90">
+                →
+              </span>
             </Link>
 
             <h1
@@ -43,7 +45,7 @@ export function Home() {
               бизнеса
             </h1>
 
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[var(--color-ink-muted)] sm:text-lg">
+            <p className="mx-auto mt-6 max-w-[42rem] text-base leading-relaxed text-[var(--color-ink-muted)] sm:text-lg">
               Команда юристов под руководством Марка Торопова. Берём на себя юридическую сторону вашего бизнеса —
               чтобы вы занимались бизнесом, а не бумагами.
             </p>
@@ -67,7 +69,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="w-full px-4 py-20 sm:px-8 lg:px-12">
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
             Основные услуги
@@ -118,7 +120,7 @@ export function Home() {
       </section>
 
       <section className="border-y border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="w-full px-4 py-20 sm:px-8 lg:px-12">
           <FadeIn>
             <h2 className="text-3xl font-bold tracking-tight text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
               Знаем специфику вашей сферы
@@ -140,7 +142,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="w-full px-4 py-20 sm:px-8 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
           <FadeIn className="lg:col-span-5">
             <div className="aspect-[4/5] max-w-md overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--color-border)] to-[var(--color-accent-soft)] lg:max-w-none">
@@ -168,7 +170,7 @@ export function Home() {
       </section>
 
       <section className="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="w-full px-4 py-20 sm:px-8 lg:px-12">
           <FadeIn>
             <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
               В цифрах
@@ -195,7 +197,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="w-full px-4 py-20 sm:px-8 lg:px-12">
         <FadeIn>
           <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
             Прозрачно. Быстро. Без лишнего
@@ -217,8 +219,8 @@ export function Home() {
       </section>
 
       <section id="zayavka" className="border-t border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <div className="mx-auto max-w-xl">
+        <div className="w-full px-4 py-20 sm:px-8 lg:px-12">
+          <div className="w-full">
             <FadeIn>
               <h2 className="text-center text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
                 Есть юридический вопрос?

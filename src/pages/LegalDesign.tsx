@@ -93,7 +93,7 @@ export function LegalDesign() {
       />
 
       <section className="gradient-mesh border-b border-[var(--color-border)]">
-        <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
+        <div className="w-full px-4 py-24 text-center sm:px-8 lg:px-12 sm:py-32">
           <FadeIn>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">Продукт</p>
             <h1
@@ -104,7 +104,7 @@ export function LegalDesign() {
               <br />
               документы, которые работают на бизнес
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-muted)]">
+            <p className="mx-auto mt-6 max-w-[42rem] text-lg leading-relaxed text-[var(--color-ink-muted)]">
               Обычный договор дочитывают до конца меньше 5% подписантов. Документ в стиле Legal Design — читают, понимают и
               выполняют.
             </p>
@@ -121,7 +121,7 @@ export function LegalDesign() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+      <section className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
         <FadeIn>
           <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
             Что такое Legal Design — и зачем он нужен вашему бизнесу
@@ -159,7 +159,7 @@ export function LegalDesign() {
       </section>
 
       <section className="border-y border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
           <FadeIn>
             <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
               Три составляющих услуги
@@ -191,7 +191,7 @@ export function LegalDesign() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <section className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
         <FadeIn>
           <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
             Кому нужен Legal Design
@@ -210,7 +210,7 @@ export function LegalDesign() {
       </section>
 
       <section id="primery" className="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
           <FadeIn>
             <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
               Разница между обычным договором и Legal Design
@@ -248,7 +248,7 @@ export function LegalDesign() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+      <section className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
         <FadeIn>
           <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
             Вопросы и ответы
@@ -266,7 +266,7 @@ export function LegalDesign() {
         </dl>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      <section className="w-full px-4 pb-20 sm:px-8 lg:px-12">
         <FadeIn>
           <div className="rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-center sm:px-12">
             <h2 className="text-2xl font-medium text-[#f7f3f0]" style={{ fontFamily: 'var(--font-display)' }}>

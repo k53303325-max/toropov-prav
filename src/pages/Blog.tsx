@@ -26,7 +26,7 @@ const posts = [
 
 export function Blog() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <div className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
       <Seo
         title="Блог — Торопов Прав"
         description="Статьи о Legal Design, договорах, интеллектуальной собственности и защите бизнеса. Экспертиза команды."

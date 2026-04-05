@@ -105,7 +105,7 @@ const sections: { title: string; intro?: string; bullets: string[]; foot?: React
 
 export function Services() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <div className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
       <Seo
         title="Юридические услуги для бизнеса — Торопов Прав"
         description="Договоры и сделки, интеллектуальная собственность, корпоративное право, Legal Design, уголовная защита бизнеса. Правовое сопровождение среднего бизнеса."

@@ -61,7 +61,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]/95 backdrop-blur-md">
       <div className="relative">
-        <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 sm:h-[4.25rem] sm:px-6">
+        <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 sm:h-[4.25rem] sm:px-8 lg:px-12">
           <div className="flex min-w-0 items-center justify-start gap-1">
             <nav className="hidden items-center gap-1 lg:flex" aria-label="Разделы">
               {/* Услуги: раскрытие по hover (как Industries на delphi.ai), компактная панель */}

@@ -23,6 +23,8 @@
   /* Рамка контента (как на delphi.ai) */
   --color-frame-border: #d4cbc2;
   --color-frame-outer: #ede8e2;
+  /* Тонкая обводка pill / бейджа в hero */
+  --color-pill-border: #e3dbd4;
   --color-mint: var(--color-accent-muted);
   --color-mint-soft: var(--color-accent-soft);
 
@@ -33,10 +35,18 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    width: 100%;
   }
   body {
     @apply bg-[var(--color-surface)] text-[var(--color-ink-muted)] antialiased;
     font-family: var(--font-body);
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+  #root {
+    width: 100%;
+    min-height: 100%;
   }
 }
 

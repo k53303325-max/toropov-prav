@@ -54,7 +54,7 @@ const cases = [
 
 export function Cases() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <div className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
       <Seo
         title="Кейсы — Торопов Прав"
         description="Примеры работ: Legal Design, договоры, сопровождение бизнеса. Обезличенные кейсы по типу задачи и результату."

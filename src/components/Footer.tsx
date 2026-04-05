@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export function Footer() {
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-3">
+      <div className="grid w-full gap-10 px-4 py-14 sm:px-8 lg:grid-cols-3 lg:px-12">
         <div>
           <p className="text-lg font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
             Торопов <span className="text-[var(--color-accent)]">Прав</span>

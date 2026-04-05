@@ -28,7 +28,7 @@ export function About() {
         description="Торопов Прав — юридическая компания под руководством Марка Торопова. 8 лет, специализация в digital, event, HoReCa, IT, стартапы. Команда юристов по направлениям."
       />
 
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <div className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
         <FadeIn>
           <h1 className="text-4xl font-bold tracking-tight text-[var(--color-ink)] sm:text-5xl" style={{ fontFamily: 'var(--font-display)' }}>
             Торопов Прав — юридическая компания с личной ответственностью
