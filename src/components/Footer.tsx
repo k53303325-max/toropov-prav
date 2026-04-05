@@ -5,11 +5,12 @@ export function Footer() {
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-3">
         <div>
-          <p className="font-[family-name:var(--font-display)] text-lg font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
+          <p className="text-lg font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
             Торопов <span className="text-[var(--color-accent)]">Прав</span>
           </p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-[var(--color-ink-muted)]">
-            Юридические услуги для бизнеса и IT на понятном языке. Сопровождение бизнеса, договоры и legal design.
+            Правовое сопровождение бизнеса. Команда юристов под руководством Марка Торопова — договоры, ИС, Legal Design.
+            Фамилия в названии — личная ответственность основателя.
           </p>
         </div>
         <div className="flex flex-col gap-2 text-sm">
@@ -23,11 +24,14 @@ export function Footer() {
           <Link className="text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]" to="/cases">
             Кейсы
           </Link>
+          <Link className="text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]" to="/blog">
+            Блог
+          </Link>
         </div>
         <div className="text-sm">
           <span className="font-semibold text-[var(--color-ink)]">Связь</span>
           <p className="mt-2 text-[var(--color-ink-muted)]">
-            Замените на ваши контакты: e-mail и телефон для заявок.
+            Реквизиты (ИНН/ОГРНИП, юр. адрес) и актуальные контакты — вставьте в футер перед запуском.
           </p>
           <a
             href="mailto:hello@toropovprav.ru"

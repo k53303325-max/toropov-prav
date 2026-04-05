@@ -6,9 +6,10 @@ const nav = [
   { to: '/', label: 'Главная' },
   { to: '/services', label: 'Услуги' },
   { to: '/legal-design', label: 'Legal Design' },
-  { to: '/about', label: 'О нас' },
+  { to: '/about', label: 'О компании' },
   { to: '/cases', label: 'Кейсы' },
-  { to: '/contacts', label: 'Контакты' },
+  { to: '/blog', label: 'Блог' },
+  { to: '/contact', label: 'Контакты' },
 ]
 
 function linkClass({ isActive }: { isActive: boolean }) {
@@ -26,7 +27,7 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link to="/" className="group flex items-baseline gap-1">
           <span
-            className="font-[family-name:var(--font-display)] text-lg font-bold tracking-tight text-[var(--color-ink)]"
+            className="text-lg font-bold tracking-tight text-[var(--color-ink)]"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Торопов
@@ -34,7 +35,7 @@ export function Header() {
           <span className="text-sm font-semibold text-[var(--color-accent)]">Прав</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Основное меню">
+        <nav className="hidden items-center gap-6 xl:flex" aria-label="Основное меню">
           {nav.map((item) => (
             <NavLink key={item.to} to={item.to} className={linkClass}>
               {item.label}
@@ -42,18 +43,18 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Link
-            to="/contacts"
+            to="/contact"
             className="rounded-full bg-[var(--color-ink)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-accent)]"
           >
-            Обсудить задачу
+            Оставить заявку
           </Link>
         </div>
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--color-border)] lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--color-border)] xl:hidden"
           aria-expanded={open}
           aria-label={open ? 'Закрыть меню' : 'Открыть меню'}
           onClick={() => setOpen((v) => !v)}
@@ -78,7 +79,7 @@ export function Header() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-[var(--color-border)] lg:hidden"
+            className="overflow-hidden border-t border-[var(--color-border)] xl:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Мобильное меню">
               {nav.map((item) => (
@@ -92,11 +93,11 @@ export function Header() {
                 </NavLink>
               ))}
               <Link
-                to="/contacts"
+                to="/contact"
                 className="mt-2 rounded-full bg-[var(--color-ink)] px-4 py-3 text-center text-sm font-semibold text-white"
                 onClick={() => setOpen(false)}
               >
-                Обсудить задачу
+                Оставить заявку
               </Link>
             </nav>
           </motion.div>

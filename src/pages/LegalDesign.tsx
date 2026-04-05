@@ -1,61 +1,156 @@
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { FadeIn } from '../components/FadeIn'
 import { Button } from '../components/Button'
+import { Seo } from '../components/Seo'
 
-const steps = [
+const faqItems = [
   {
-    title: 'Текст и каркас',
-    bullets: ['Убираем канцелярит и лишние цитаты закона.', 'Меняем верстку: заголовки, списки, акценты.', 'Смысл для суда и сделки не теряем.'],
+    q: 'Что такое Legal Design?',
+    a: 'Подход к созданию юридических документов, при котором главное — понятность для читателя. Тот же юридический смысл, но в структуре, которую можно прочитать за три минуты.',
   },
   {
-    title: 'Синергия текста и макета',
-    bullets: ['Продумываем макет будущего документа.', 'Добавляем дизайн-элементы и иконки там, где они помогают.', 'Не украшаем ради картинки.'],
+    q: 'Это законно?',
+    a: 'Да. Legal Design не меняет юридическое содержание — только форму подачи. Документ остаётся полностью правомерным.',
   },
   {
-    title: 'Интеграция в макет',
-    bullets: ['Вносим текст в готовую сетку.', 'Расставляем визуальные акценты.', 'Согласуем черновик с вами до финала.'],
+    q: 'Чем отличается от обычного юриста?',
+    a: 'Обычный юрист пишет для суда. Legal Design — для человека. Задача не просто составить документ, а сделать его работающим инструментом.',
   },
   {
-    title: 'Финиш и масштаб',
-    bullets: ['Дорабатываем цвет, отступы, чтение на экране.', 'Готовим экспорт под PDF, печать, презентацию.', 'При желании — под ваш брендбук.'],
+    q: 'Сколько стоит?',
+    a: 'Зависит от типа и объёма документа. Уточним на бесплатной консультации.',
+  },
+  {
+    q: 'Сколько времени занимает?',
+    a: 'От 3 до 10 рабочих дней в зависимости от сложности документа.',
+  },
+  {
+    q: 'Можно переделать существующий документ?',
+    a: 'Да — это один из самых частых запросов. Берём ваш текущий договор или оферту и делаем редизайн.',
+  },
+  {
+    q: 'Для каких документов подходит?',
+    a: 'Оферты, пользовательские соглашения, договоры с клиентами и подрядчиками, NDA, корпоративные документы, HR-политики.',
+  },
+  {
+    q: 'Останется ли документ юридически грамотным?',
+    a: 'Обязательно. Над документом работает юрист — содержание не упрощается, упрощается форма.',
   },
 ]
 
-const benefits = [
-  { title: 'Быстрее сделки', text: 'Меньше раундов «а что тут написано?» — быстрее подпись.' },
-  { title: 'Меньше споров', text: 'Понятные условия снижают риск разных трактовок потом.' },
-  { title: 'Понятные условия', text: 'CEO, продукт и финансы читают один и тот же смысл.' },
+const audience = [
+  {
+    title: 'Стартапы и IT',
+    text: 'Инвестиционные соглашения, оферты, политики — документы, которые инвесторы и пользователи реально читают',
+  },
+  {
+    title: 'HoReCa',
+    text: 'Договоры аренды, франшизные соглашения, трудовые договоры для сотрудников без юридического бэкграунда',
+  },
+  {
+    title: 'Контентмейкеры',
+    text: 'Авторские договоры и лицензии, которые понимают обе стороны сделки',
+  },
+  {
+    title: 'Event',
+    text: 'Договоры с площадками и подрядчиками, которые не оставляют двойных трактовок',
+  },
+  {
+    title: 'Онлайн-школы',
+    text: 'Оферта, политика возврата, пользовательское соглашение — чтобы клиенты знали, на что соглашаются',
+  },
 ]
 
 export function LegalDesign() {
+  useEffect(() => {
+    const id = 'schema-faq-legal-design'
+    const existing = document.getElementById(id)
+    if (existing) existing.remove()
+    const script = document.createElement('script')
+    script.id = id
+    script.type = 'application/ld+json'
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    })
+    document.head.appendChild(script)
+    return () => {
+      document.getElementById(id)?.remove()
+    }
+  }, [])
+
   return (
     <div>
+      <Seo
+        title="Legal Design — понятные юридические документы для бизнеса | Торопов Прав"
+        description="Legal Design: создаём договоры, оферты и политики, которые люди реально читают. Реинжиниринг, дизайн, оптимизация юридических документов."
+      />
+
       <section className="gradient-mesh border-b border-[var(--color-border)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <FadeIn>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent)]">Продукт</p>
-            <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-6xl" style={{ fontFamily: 'var(--font-display)' }}>
-              Legal design: документы, которые работают на бизнес
+            <h1
+              className="max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-6xl"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Legal Design: документы, которые работают на ваш бизнес
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-muted)]">
-              Legal design — это когда юридический текст не «простыня», а понятный продукт: структура, визуальная иерархия,
-              иногда — иконки и сетка. Мы оптимизируем и слова, и подачу. Юридическую основу сохраняем.
+              Обычный договор дочитывают до конца меньше 5% подписантов. Документ в стиле Legal Design — читают, понимают и
+              выполняют.
             </p>
-            <Button className="mt-10" to="/contacts">
-              Запросить примеры
-            </Button>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button to="/contact">Заказать Legal Design</Button>
+              <a
+                href="#primery"
+                className="inline-flex items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-6 py-3 text-[15px] font-semibold text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-soft)]"
+              >
+                Смотреть примеры
+              </a>
+            </div>
           </FadeIn>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
         <FadeIn>
           <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-            Почему «обычные» договоры часто не работают
+            Что такое Legal Design — и зачем он нужен вашему бизнесу
           </h2>
-          <p className="mt-4 max-w-2xl text-lg text-[var(--color-ink-muted)]">
-            Они написаны «на все случаи», копируются из старых шаблонов и раздуваются «на всякий случай». В итоге их не
-            читают до конца, условия помнят по-разному, а в споре каждый тянет договор в свою сторону. Это не
-            профессионально — это дорого по времени и нервам.
+        </FadeIn>
+        <FadeIn className="mt-8 space-y-5 text-[var(--color-ink-muted)]" delay={0.05}>
+          <p>
+            Legal Design — это подход к созданию юридических документов, при котором на первом месте стоит понятность для
+            читателя. Классический текст часто пишется «для толстой папки»: сложные конструкции, отсылки к статьям,
+            многоуровневые условия. Для суда это может быть оправдано — но для сотрудника, клиента или партнёра такой
+            договор превращается в стену текста. В итоге его не читают, условия помнят по-разному, а споры начинаются с
+            фразы «мы думали, что тут другое».
+          </p>
+          <p>
+            Legal Design меняет логику подачи. Документ проектируется как продукт: чёткая структура, визуальные акценты,
+            понятный язык. Таблицы вместо сплошного полотна. Схемы там, где так проще ухватить суть. Иконки и выноски —
+            чтобы глаз цеплялся за важное, а не терялся в нумерации. Для российского бизнеса это особенно актуально: и
+            собственник, и руководитель отдела, и контрагент из другой сферы должны понимать, что подписывают — без
+            «перевода» через юриста каждый раз.
+          </p>
+          <p>
+            Юридическая сила при этом не «размывается». Меняется форма, а не произвольное искажение смысла: сложные блоки
+            можно вынести в приложения, сноски или отдельные разделы для специалистов. Клиент подписывает то, что осознал.
+            Сотрудник соблюдает то, что прочитал. Меньше недопонимания — меньше конфликтов и быстрее сделки. Именно так
+            legal design связывается с разработкой договоров и проверкой договоров в нашей работе: мы не украшаем текст
+            ради картинки — мы делаем его рабочим инструментом сопровождения бизнеса.
+          </p>
+          <p>
+            Если коротко: Legal Design — это когда юридические услуги для бизнеса включают не только «правильные
+            формулировки», но и подачу, которой люди реально пользуются. Это отдельное направление в «Торопов Прав»: над
+            ним работают юристы вместе с логикой документа и визуальной структурой — чтобы и регулятор, и контрагент
+            видели в тексте не угрозу, а ясные правила игры.
           </p>
         </FadeIn>
       </section>
@@ -64,93 +159,28 @@ export function LegalDesign() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <FadeIn>
             <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-              Как мы упрощаем документы
+              Три составляющих услуги
             </h2>
-            <p className="mt-3 max-w-2xl text-[var(--color-ink-muted)]">
-              Логика близка к тому, как делают сильные продуктовые команды: сначала ясность, потом — детализация. Ниже —
-              типичный каркас этапов (как в студиях вроде{' '}
-              <a href="https://mollislex.ru/legal-design" className="font-medium text-[var(--color-accent)] hover:underline" target="_blank" rel="noreferrer">
-                Mollis Lex
-              </a>
-              , но без воды и дублей на странице).
-            </p>
           </FadeIn>
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {steps.map((s, i) => (
-              <FadeIn key={s.title} delay={i * 0.05}>
-                <div className="h-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-                  <span className="text-xs font-bold text-[var(--color-accent)]">Этап {i + 1}</span>
-                  <h3 className="mt-2 text-xl font-semibold text-[var(--color-ink)]">{s.title}</h3>
-                  <ul className="mt-4 space-y-2 text-sm text-[var(--color-ink-muted)]">
-                    {s.bullets.map((b) => (
-                      <li key={b} className="flex gap-2">
-                        <span className="text-[var(--color-mint)]">✓</span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Before / After */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <FadeIn>
-          <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-            До и после
-          </h2>
-          <p className="mt-3 text-[var(--color-ink-muted)]">Условный фрагмент — не юридическая консультация, а иллюстрация подхода.</p>
-        </FadeIn>
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <FadeIn>
-            <div className="rounded-2xl border border-[var(--color-border)] bg-zinc-100 p-6">
-              <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">До</p>
-              <p className="mt-4 font-mono text-sm leading-relaxed text-zinc-700">
-                «В соответствии с положениями ст. N … ст. M … Стороны, руководствуясь вышеизложенным, в целях реализации
-                договорённостей, достигнутых в ходе переговоров, осуществляют взаимодействие…»
-              </p>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <div className="rounded-2xl border border-[var(--color-accent)]/30 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-card)]">
-              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">После</p>
-              <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink-muted)]">
-                <strong className="text-[var(--color-ink)]">Что делаем:</strong> вы передаёте материалы до среды; мы
-                готовим черновик к пятнице. <br />
-                <br />
-                <strong className="text-[var(--color-ink)]">Если срок срывается:</strong> пишем заранее, согласуем новую
-                дату. Ссылки на статьи закона — в сносках для юристов, не в теле письма для CEO.
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Structure examples */}
-      <section className="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-              Примеры структуры
-            </h2>
-            <p className="mt-3 max-w-2xl text-[var(--color-ink-muted)]">
-              Так может выглядеть каркас B2B-договора или оферты — с акцентами для читателя.
-            </p>
-          </FadeIn>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              { t: 'Коротко о сделке', d: 'Кто, что поставляет, ключевой результат, срок.' },
-              { t: 'Деньги и порядок', d: 'Стоимость, акты, счета, что считается приёмкой.' },
-              { t: 'Риски и выход', d: 'Ответственность, конфиденциальность, как расторгнуть без войны.' },
+              {
+                t: 'Реинжиниринг',
+                d: 'Переработка структуры и логики документа. Убираем лишнее, расставляем приоритеты, делаем навигацию по тексту.',
+              },
+              {
+                t: 'Дизайн',
+                d: 'Визуальное оформление: схемы, таблицы, иконки, цветовые акценты. Документ становится удобным для чтения.',
+              },
+              {
+                t: 'Оптимизация',
+                d: 'Упрощение языка без потери юридической силы. Сложные конструкции — в понятные фразы.',
+              },
             ].map((x, i) => (
               <FadeIn key={x.t} delay={i * 0.06}>
-                <div className="rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-5">
-                  <div className="text-xs font-bold text-[var(--color-accent)]">{String(i + 1).padStart(2, '0')}</div>
-                  <h3 className="mt-2 font-semibold text-[var(--color-ink)]">{x.t}</h3>
-                  <p className="mt-2 text-sm text-[var(--color-ink-muted)]">{x.d}</p>
+                <div className="h-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+                  <h3 className="text-xl font-semibold text-[var(--color-ink)]">{x.t}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink-muted)]">{x.d}</p>
                 </div>
               </FadeIn>
             ))}
@@ -158,40 +188,94 @@ export function LegalDesign() {
         </div>
       </section>
 
-      {/* Benefits */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <FadeIn>
           <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-            Выгоды для бизнеса
+            Кому нужен Legal Design
           </h2>
         </FadeIn>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {benefits.map((b, i) => (
-            <FadeIn key={b.title} delay={i * 0.07}>
-              <div className="rounded-2xl bg-[var(--color-ink)] p-8 text-white">
-                <h3 className="text-xl font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
-                  {b.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{b.text}</p>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {audience.map((a, i) => (
+            <FadeIn key={a.title} delay={i * 0.05}>
+              <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-6">
+                <h3 className="font-semibold text-[var(--color-ink)]">{a.title}</h3>
+                <p className="mt-2 text-sm text-[var(--color-ink-muted)]">{a.text}</p>
               </div>
             </FadeIn>
           ))}
         </div>
       </section>
 
+      <section id="primery" className="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+          <FadeIn>
+            <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
+              Разница между обычным договором и Legal Design
+            </h2>
+            <p className="mt-3 text-[var(--color-ink-muted)]">
+              Примеры из реальных кейсов — по запросу. Ниже — схематичный mock-up: «до» и «после».
+            </p>
+          </FadeIn>
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <FadeIn>
+              <div className="rounded-2xl border border-[var(--color-border)] bg-zinc-200/80 p-6">
+                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-600">До</p>
+                <p className="mt-4 font-mono text-xs leading-relaxed text-zinc-700">
+                  Сплошной текст без подзаголовков……………… длинные абзацы………… отсылки к статьям подряд………… одна
+                  нумерация на пять страниц…………
+                </p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.08}>
+              <div className="rounded-2xl border-2 border-[var(--color-accent)]/40 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-card)]">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">После</p>
+                <div className="mt-4 space-y-2 text-sm text-[var(--color-ink-muted)]">
+                  <div className="rounded-lg bg-[var(--color-accent-soft)] px-3 py-2 font-medium text-[var(--color-ink)]">
+                    Блок 1 · Суть сделки
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="rounded border border-[var(--color-border)] p-2">Таблица сроков</div>
+                    <div className="rounded border border-[var(--color-border)] p-2">Таблица оплат</div>
+                  </div>
+                  <p>Короткие абзацы, иконки у ключевых обязательств, сноски для юристов — внизу страницы.</p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+        <FadeIn>
+          <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
+            Вопросы и ответы
+          </h2>
+        </FadeIn>
+        <dl className="mt-10 space-y-6">
+          {faqItems.map((item, i) => (
+            <FadeIn key={item.q} delay={i * 0.03}>
+              <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-5 py-4">
+                <dt className="font-semibold text-[var(--color-ink)]">{item.q}</dt>
+                <dd className="mt-2 text-sm text-[var(--color-ink-muted)]">{item.a}</dd>
+              </div>
+            </FadeIn>
+          ))}
+        </dl>
+      </section>
+
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
         <FadeIn>
-          <div className="rounded-3xl bg-gradient-to-br from-[var(--color-accent-soft)] to-[var(--color-mint-soft)] px-8 py-12 text-center sm:px-12">
-            <h2 className="text-2xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-              Где применим legal design
+          <div className="rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-center sm:px-12">
+            <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'var(--font-display)' }}>
+              Заказать Legal Design
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-[var(--color-ink-muted)]">
-              Почти для любых документов: договоры, корпоративные акты, судебные материалы (где уместно), локальные
-              положения, IP &amp; IT. Ограничений по отраслям нет — важнее задача и аудитория.
-            </p>
-            <Button className="mt-8" to="/contacts">
-              Обсудить Legal Design
-            </Button>
+            <p className="mx-auto mt-3 max-w-lg text-zinc-400">Расскажите о документе — подберём формат и сроки.</p>
+            <Link
+              to="/contact"
+              className="mt-8 inline-flex rounded-full bg-white px-8 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:bg-[var(--color-accent-soft)]"
+            >
+              Перейти к заявке
+            </Link>
           </div>
         </FadeIn>
       </section>
