@@ -24,22 +24,31 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     isActive ? 'bg-[var(--color-cta-delphi)] text-[var(--color-cta-delphi-text)]' : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]',
   ].join(' ')
 
+const HOVER_CLOSE_MS = 160
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  const servicesWrapRef = useRef<HTMLDivElement>(null)
+  const hoverCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  useEffect(() => {
-    function handle(e: MouseEvent) {
-      if (servicesWrapRef.current && !servicesWrapRef.current.contains(e.target as Node)) {
-        setServicesOpen(false)
-      }
+  const cancelCloseTimer = () => {
+    if (hoverCloseTimer.current) {
+      clearTimeout(hoverCloseTimer.current)
+      hoverCloseTimer.current = null
     }
-    if (servicesOpen) {
-      document.addEventListener('mousedown', handle)
-      return () => document.removeEventListener('mousedown', handle)
-    }
-  }, [servicesOpen])
+  }
+
+  const openServices = () => {
+    cancelCloseTimer()
+    setServicesOpen(true)
+  }
+
+  const scheduleCloseServices = () => {
+    cancelCloseTimer()
+    hoverCloseTimer.current = setTimeout(() => setServicesOpen(false), HOVER_CLOSE_MS)
+  }
+
+  useEffect(() => () => cancelCloseTimer(), [])
 
   useEffect(() => {
     function onEsc(e: KeyboardEvent) {
@@ -51,12 +60,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]/95 backdrop-blur-md">
-      <div ref={servicesWrapRef} className="relative">
+      <div className="relative">
         <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 sm:h-[4.25rem] sm:px-6">
-          {/* Слева: desktop — Услуги + О компании + Кейсы; mobile — бургер */}
           <div className="flex min-w-0 items-center justify-start gap-1">
             <nav className="hidden items-center gap-1 lg:flex" aria-label="Разделы">
-              <div className="relative">
+              {/* Услуги: раскрытие по hover (как Industries на delphi.ai), компактная панель */}
+              <div
+                className="relative"
+                onMouseEnter={openServices}
+                onMouseLeave={scheduleCloseServices}
+              >
                 <button
                   type="button"
                   aria-expanded={servicesOpen}
@@ -64,16 +77,59 @@ export function Header() {
                   aria-controls="services-mega-menu"
                   onClick={() => setServicesOpen((v) => !v)}
                   className={[
-                    'inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-medium transition-colors',
+                    'inline-flex items-center gap-1.5 rounded-xl border border-transparent px-3 py-2 text-sm font-medium transition-colors',
                     servicesOpen
-                      ? 'bg-[var(--color-cta-delphi)] text-[var(--color-cta-delphi-text)]'
-                      : 'text-[var(--color-ink-muted)] hover:bg-[var(--color-cta-delphi)]/50 hover:text-[var(--color-ink)]',
+                      ? 'border-[var(--color-border)] bg-[var(--color-cta-delphi)] text-[var(--color-cta-delphi-text)]'
+                      : 'text-[var(--color-ink-muted)] hover:border-[var(--color-border)] hover:bg-[var(--color-cta-delphi)]/40 hover:text-[var(--color-ink)]',
                   ].join(' ')}
                 >
                   Услуги
                   <Chevron open={servicesOpen} />
                 </button>
+
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      id="services-mega-menu"
+                      role="region"
+                      aria-label="Направления услуг"
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute left-0 top-full z-50 flex flex-col"
+                    >
+                      {/* мост между кнопкой и карточкой — курсор не «рвёт» hover */}
+                      <div className="h-2 w-[min(calc(100vw-2rem),34rem)] shrink-0" aria-hidden />
+                      <div className="-mt-2 w-[min(calc(100vw-2rem),28rem)] rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-4 shadow-[0_16px_40px_-8px_rgba(26,19,16,0.14)] md:w-[34rem] md:p-5">
+                        <div className="grid grid-cols-2 gap-x-6 gap-y-3 md:gap-x-8 md:gap-y-3.5">
+                          {servicesMegaMenuColumns.map((col, ci) => (
+                            <ul key={ci} className="flex flex-col gap-3 md:gap-3">
+                              {col.map((item) => (
+                                <li key={item.title}>
+                                  <Link
+                                    to={item.to}
+                                    className="group block rounded-xl px-1 py-0.5 transition-colors hover:bg-[var(--color-accent-soft)]/60"
+                                    onClick={() => setServicesOpen(false)}
+                                  >
+                                    <span className="block text-[13px] font-semibold leading-tight text-[var(--color-ink)] group-hover:text-[var(--color-accent)] md:text-sm">
+                                      {item.title}
+                                    </span>
+                                    <span className="mt-0.5 block text-[11px] leading-snug text-[var(--color-ink-muted)] md:text-xs">
+                                      {item.description}
+                                    </span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+
               <NavLink to="/about" className={navLinkClass}>
                 О компании
               </NavLink>
@@ -101,7 +157,6 @@ export function Header() {
             </button>
           </div>
 
-          {/* По центру: логотип */}
           <Link
             to="/"
             className="text-center text-xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-[1.35rem]"
@@ -111,7 +166,6 @@ export function Header() {
             Торопов <span className="text-[var(--color-accent)]">Прав</span>
           </Link>
 
-          {/* Справа: заявка в стиле My Delphi */}
           <div className="flex items-center justify-end">
             <Link
               to="/contact"
@@ -127,54 +181,6 @@ export function Header() {
             </Link>
           </div>
         </div>
-
-        {/* Mega menu — как Industries на delphi.ai */}
-        <AnimatePresence>
-          {servicesOpen && (
-            <motion.div
-              id="services-mega-menu"
-              role="region"
-              aria-label="Направления услуг"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
-              className="absolute left-0 right-0 top-full z-50 border-b border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-4 py-8 shadow-[0_24px_48px_-12px_rgba(26,19,16,0.12)] sm:px-6"
-            >
-              <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2 md:gap-12">
-                {servicesMegaMenuColumns.map((col, ci) => (
-                  <ul key={ci} className="flex flex-col gap-6">
-                    {col.map((item) => (
-                      <li key={item.title}>
-                        <Link
-                          to={item.to}
-                          className="group block rounded-2xl p-1 transition-colors hover:bg-[var(--color-cta-delphi)]/40"
-                          onClick={() => setServicesOpen(false)}
-                        >
-                          <span className="block font-semibold text-[var(--color-ink)] group-hover:text-[var(--color-accent)]">
-                            {item.title}
-                          </span>
-                          <span className="mt-1 block text-sm leading-snug text-[var(--color-ink-muted)]">
-                            {item.description}
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ))}
-              </div>
-              <div className="mx-auto mt-8 max-w-4xl border-t border-[var(--color-border)] pt-6 text-center">
-                <Link
-                  to="/services"
-                  className="text-sm font-semibold text-[var(--color-accent)] hover:underline"
-                  onClick={() => setServicesOpen(false)}
-                >
-                  Все услуги и полный список →
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       <AnimatePresence>

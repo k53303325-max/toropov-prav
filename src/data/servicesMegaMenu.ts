@@ -19,7 +19,7 @@ export const servicesMegaMenuColumns: [MegaMenuItem[], MegaMenuItem[]] = [
     },
     {
       title: 'Представительство',
-      description: 'Арбитраж, ФАС, СИП, досудебное урегулирование и взыскание',
+      description: 'в судах и государственных органах',
       to: '/services',
     },
     {

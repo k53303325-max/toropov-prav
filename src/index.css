@@ -20,8 +20,9 @@
   --color-cta-delphi: #ebe4de;
   --color-cta-delphi-hover: #e2d9d0;
   --color-cta-delphi-text: #2d2926;
-  /* Тонкая рамка «коробки» как на delphi.ai */
-  --color-frame-border: #e5ddd4;
+  /* Рамка контента (как на delphi.ai) */
+  --color-frame-border: #d4cbc2;
+  --color-frame-outer: #ede8e2;
   --color-mint: var(--color-accent-muted);
   --color-mint-soft: var(--color-accent-soft);
 
