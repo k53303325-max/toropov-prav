@@ -64,7 +64,7 @@ export function LeadForm({ id, submitLabel = 'Отправить заявку', 
       </div>
       <button
         type="submit"
-        className="w-full rounded-full bg-[var(--color-ink)] py-3.5 text-sm font-semibold text-white transition hover:bg-[var(--color-accent)]"
+        className="w-full rounded-full bg-[var(--color-ink)] py-3.5 text-sm font-semibold text-[#f7f3f0] transition hover:bg-[var(--color-accent)]"
       >
         {submitLabel}
       </button>

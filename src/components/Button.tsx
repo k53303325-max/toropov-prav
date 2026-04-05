@@ -14,9 +14,9 @@ const base =
 
 const styles = {
   primary:
-    'bg-[var(--color-ink)] text-white shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]',
+    'bg-[var(--color-ink)] text-[#f7f3f0] shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:bg-[var(--color-accent)] hover:shadow-[var(--shadow-card-hover)]',
   ghost:
-    'border border-[var(--color-border)] bg-[var(--color-surface-elevated)] text-[var(--color-ink)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-soft)]',
+    'border border-[var(--color-border)] bg-[var(--color-btn-secondary)] text-[var(--color-ink)] hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-btn-secondary-hover)]',
 }
 
 export function Button({ children, to, href, variant = 'primary', className = '' }: Props) {

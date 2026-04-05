@@ -93,23 +93,26 @@ export function LegalDesign() {
       />
 
       <section className="gradient-mesh border-b border-[var(--color-border)]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <FadeIn>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">Продукт</p>
             <h1
-              className="max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-6xl"
+              className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-6xl"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              Legal Design: документы, которые работают на ваш бизнес
+              Legal Design:
+              <br />
+              документы, которые работают на бизнес
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-muted)]">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-muted)]">
               Обычный договор дочитывают до конца меньше 5% подписантов. Документ в стиле Legal Design — читают, понимают и
               выполняют.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Button to="/contact">Заказать Legal Design</Button>
               <a
                 href="#primery"
-                className="inline-flex items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-6 py-3 text-[15px] font-semibold text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-soft)]"
+                className="inline-flex items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-btn-secondary)] px-6 py-3 text-[15px] font-semibold text-[var(--color-ink)] transition hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-btn-secondary-hover)]"
               >
                 Смотреть примеры
               </a>
@@ -266,13 +269,13 @@ export function LegalDesign() {
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
         <FadeIn>
           <div className="rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-center sm:px-12">
-            <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'var(--font-display)' }}>
+            <h2 className="text-2xl font-medium text-[#f7f3f0]" style={{ fontFamily: 'var(--font-display)' }}>
               Заказать Legal Design
             </h2>
-            <p className="mx-auto mt-3 max-w-lg text-zinc-400">Расскажите о документе — подберём формат и сроки.</p>
+            <p className="mx-auto mt-3 max-w-lg text-[#c4bbb5]">Расскажите о документе — подберём формат и сроки.</p>
             <Link
               to="/contact"
-              className="mt-8 inline-flex rounded-full bg-white px-8 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:bg-[var(--color-accent-soft)]"
+              className="mt-8 inline-flex rounded-full bg-[#f7f3f0] px-8 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:bg-[var(--color-accent-soft)]"
             >
               Перейти к заявке
             </Link>

@@ -1,21 +1,26 @@
 @import 'tailwindcss';
 
+/* Вдохновение: delphi.ai — тёплый крем, тёмно-коричневый текст, терракотовые акценты */
 @theme {
-  --font-display: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-  --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Georgia', ui-serif, serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #0a0a0b;
-  --color-ink-muted: #52525b;
-  --color-surface: #fafafa;
-  --color-surface-elevated: #ffffff;
-  --color-border: #e4e4e7;
-  --color-accent: #3b5bdb;
-  --color-accent-soft: #e8edff;
-  --color-mint: #14b8a6;
-  --color-mint-soft: #ccfbf1;
+  --color-ink: #1a1310;
+  --color-ink-muted: #5c534d;
+  --color-surface: #f7f3f0;
+  --color-surface-elevated: #fffcf9;
+  --color-border: #e8e0d8;
+  --color-accent: #d97757;
+  --color-accent-hover: #c45c3e;
+  --color-accent-soft: #f4e6e0;
+  --color-accent-muted: #b8644a;
+  --color-btn-secondary: #e8e4e0;
+  --color-btn-secondary-hover: #ddd8d2;
+  --color-mint: var(--color-accent-muted);
+  --color-mint-soft: var(--color-accent-soft);
 
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
-  --shadow-card-hover: 0 4px 12px rgb(0 0 0 / 0.08), 0 16px 40px rgb(59 91 219 / 0.12);
+  --shadow-card: 0 1px 2px rgb(26 19 16 / 0.06), 0 8px 28px rgb(26 19 16 / 0.06);
+  --shadow-card-hover: 0 4px 12px rgb(26 19 16 / 0.08), 0 20px 40px rgb(217 119 87 / 0.12);
 }
 
 @layer base {
@@ -28,19 +33,25 @@
   }
 }
 
+/* Hero и мягкие акценты — тёплый свет, без «IT-синего» */
 .gradient-mesh {
   background:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgb(59 91 219 / 0.18), transparent),
-    radial-gradient(ellipse 60% 40% at 90% 10%, rgb(20 184 166 / 0.12), transparent),
-    radial-gradient(ellipse 50% 30% at 50% 100%, rgb(59 91 219 / 0.08), transparent);
+    radial-gradient(ellipse 90% 60% at 50% -15%, rgb(217 119 87 / 0.12), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 100% 20%, rgb(212 180 160 / 0.15), transparent 50%),
+    radial-gradient(ellipse 50% 35% at 0% 80%, rgb(217 119 87 / 0.06), transparent 45%),
+    var(--color-surface);
 }
 
 .gradient-border {
-  background: linear-gradient(135deg, rgb(59 91 219 / 0.35), rgb(20 184 166 / 0.25));
+  background: linear-gradient(135deg, rgb(217 119 87 / 0.45), rgb(180 140 120 / 0.35));
   padding: 1px;
   border-radius: 1rem;
 }
 
 .gradient-border-inner {
   @apply rounded-[15px] bg-[var(--color-surface-elevated)];
+}
+
+.font-display {
+  font-family: var(--font-display);
 }

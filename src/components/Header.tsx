@@ -46,7 +46,7 @@ export function Header() {
         <div className="hidden xl:block">
           <Link
             to="/contact"
-            className="rounded-full bg-[var(--color-ink)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-accent)]"
+            className="rounded-full bg-[var(--color-ink)] px-5 py-2.5 text-sm font-semibold text-[#f7f3f0] transition hover:bg-[var(--color-accent)]"
           >
             Оставить заявку
           </Link>
@@ -94,7 +94,7 @@ export function Header() {
               ))}
               <Link
                 to="/contact"
-                className="mt-2 rounded-full bg-[var(--color-ink)] px-4 py-3 text-center text-sm font-semibold text-white"
+                className="mt-2 rounded-full bg-[var(--color-ink)] px-4 py-3 text-center text-sm font-semibold text-[#f7f3f0]"
                 onClick={() => setOpen(false)}
               >
                 Оставить заявку

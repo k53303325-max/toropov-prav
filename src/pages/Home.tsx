@@ -24,22 +24,34 @@ export function Home() {
       />
 
       <section className="gradient-mesh relative overflow-hidden border-b border-[var(--color-border)]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
+        <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32 lg:py-40">
           <FadeIn>
+            <Link
+              to="/legal-design"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-elevated)]/90 px-4 py-2.5 text-sm font-medium text-[var(--color-accent)] shadow-sm backdrop-blur-sm transition hover:border-[var(--color-accent)]/50"
+            >
+              <span>Legal Design — документы, которые читают</span>
+              <span aria-hidden>→</span>
+            </Link>
+
             <h1
-              className="max-w-4xl text-4xl font-bold leading-[1.12] tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-[3.25rem]"
+              className="mt-10 text-[2.75rem] font-medium leading-[1.05] tracking-tight text-[var(--color-ink)] sm:text-6xl sm:leading-[1.04] lg:text-7xl"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              Правовое сопровождение бизнеса — Торопов Прав
+              Правовое сопровождение
+              <br />
+              бизнеса
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-muted)]">
+
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[var(--color-ink-muted)] sm:text-lg">
               Команда юристов под руководством Марка Торопова. Берём на себя юридическую сторону вашего бизнеса —
               чтобы вы занимались бизнесом, а не бумагами.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href="#zayavka"
-                className="inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3 text-[15px] font-semibold text-white shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:bg-[var(--color-accent)]"
+                className="inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-8 py-3.5 text-[15px] font-semibold text-[#f7f3f0] shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:bg-[var(--color-accent)]"
               >
                 Оставить заявку
               </a>
@@ -47,7 +59,8 @@ export function Home() {
                 Наши услуги
               </Button>
             </div>
-            <p className="mt-8 max-w-xl text-sm text-[var(--color-ink-muted)]">
+
+            <p className="mx-auto mt-14 max-w-md text-xs leading-relaxed text-[var(--color-ink-muted)]/80">
               Визуал: фото Марка с командой или живой рабочий момент — не стоковые люди в костюмах.
             </p>
           </FadeIn>
