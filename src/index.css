@@ -16,6 +16,12 @@
   --color-accent-muted: #b8644a;
   --color-btn-secondary: #e8e4e0;
   --color-btn-secondary-hover: #ddd8d2;
+  /* Кнопка в стиле «My Delphi» на delphi.ai */
+  --color-cta-delphi: #ebe4de;
+  --color-cta-delphi-hover: #e2d9d0;
+  --color-cta-delphi-text: #2d2926;
+  /* Тонкая рамка «коробки» как на delphi.ai */
+  --color-frame-border: #e5ddd4;
   --color-mint: var(--color-accent-muted);
   --color-mint-soft: var(--color-accent-soft);
 
