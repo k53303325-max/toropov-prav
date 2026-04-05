@@ -38,7 +38,8 @@
     width: 100%;
   }
   body {
-    @apply bg-[var(--color-surface)] text-[var(--color-ink-muted)] antialiased;
+    /* Совпадает с полем рамки — без шва у края окна */
+    @apply bg-[var(--color-frame-outer)] text-[var(--color-ink-muted)] antialiased;
     font-family: var(--font-body);
     width: 100%;
     min-height: 100%;
