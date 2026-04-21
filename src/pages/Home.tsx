@@ -13,7 +13,6 @@ const industries = [
   'Контентмейкеры',
   'IT-продукты и платформы',
   'Онлайн-сервисы',
-  'Уголовная защита бизнеса и собственников',
 ]
 
 const processSteps = [
@@ -149,7 +148,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Отрасли — 8 отдельных карточек */}
+      {/* Отрасли */}
       <section className="border-b border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
         <div className={`${pagePad} py-16 sm:py-20 lg:py-24`}>
           <FadeIn>
@@ -167,10 +166,10 @@ export function Home() {
           <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {industries.map((label, i) => (
               <FadeIn key={label} delay={Math.min(i * 0.04, 0.28)}>
-                <div className="flex h-full min-h-[9.5rem] flex-col items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/25 sm:min-h-[11rem] sm:p-7">
-                  <span className="mb-3 h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden />
+                <div className="flex h-full min-h-[10.5rem] flex-col items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 text-center shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/25 sm:min-h-[12rem] sm:p-8">
+                  <span className="mb-3 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden />
                   <h3
-                    className="text-balance text-base font-semibold leading-snug text-[var(--color-ink)] sm:text-lg"
+                    className="text-balance text-lg font-semibold leading-snug text-[var(--color-ink)] sm:text-xl lg:text-[1.35rem] lg:leading-tight"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     {label}
@@ -195,7 +194,7 @@ export function Home() {
               { n: '8 лет', d: 'На рынке правового сопровождения бизнеса' },
               { n: '200+', d: 'Клиентов — компаний и предпринимателей' },
               { n: '500+', d: 'Договоров составлено и проверено' },
-              { n: '8', d: 'Отраслей специализации' },
+              { n: '7', d: 'Отраслей специализации' },
             ].map((x, i) => (
               <FadeIn key={x.n} delay={i * 0.05}>
                 <div className="min-h-[10rem] rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-8 text-center shadow-[var(--shadow-card)] sm:min-h-[11rem]">
