@@ -93,19 +93,19 @@ export function Home() {
       {/* Компания и основатель */}
       <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
         <div className={`${pagePad} py-16 sm:py-20 lg:py-24`}>
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-14">
-            <FadeIn className="lg:col-span-5">
-              <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-card)]">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+            <FadeIn className="flex justify-center lg:col-span-4 lg:justify-start">
+              <div className="w-full max-w-[220px] overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-card)] sm:max-w-[260px] lg:max-w-[min(100%,280px)]">
                 <img
                   src="/mark-toropov.png"
                   alt="Марк Торопов, основатель и управляющий партнёр"
-                  className="aspect-[3/4] w-full object-cover object-top"
+                  className="aspect-[3/4] w-full object-cover object-[center_18%]"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
             </FadeIn>
-            <FadeIn className="lg:col-span-7" delay={0.06}>
+            <FadeIn className="lg:col-span-8" delay={0.06}>
               <h2
                 className="text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl"
                 style={{ fontFamily: 'var(--font-display)' }}

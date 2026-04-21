@@ -130,37 +130,30 @@ export function ServiceCategory() {
         </div>
       </section>
 
-      <section id="zayavka" className="bg-[var(--color-surface)]">
+      <section id="zayavka" className="border-t border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
         <div className={`mx-auto ${pageGutter} py-16 lg:py-20`}>
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-12 xl:gap-16">
-            <FadeIn className="lg:col-span-5">
+          <div className="mx-auto max-w-xl lg:max-w-2xl">
+            <FadeIn>
               <h2
-                className="w-full max-w-xl text-2xl font-bold tracking-tight text-[var(--color-ink)] sm:text-3xl"
+                className="text-center text-2xl font-bold tracking-tight text-[var(--color-ink)] sm:text-3xl"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                Заявка по направлению
+                Заявка
               </h2>
-              <p className="mt-4 w-full max-w-xl text-lg leading-relaxed text-[var(--color-ink-muted)]">
-                Опишите ситуацию — подключим профильного юриста и вернёмся с обратной связью в течение рабочего дня.
+              <p className="mt-3 text-center text-[var(--color-ink-muted)] sm:text-lg">
+                Опишите ситуацию — ответим в течение рабочего дня.
               </p>
-              <ul className="mt-8 max-w-xl space-y-3 text-sm text-[var(--color-ink-muted)]">
-                <li className="flex gap-2">
-                  <span className="text-[var(--color-accent)]">—</span>
-                  Конфиденциально, без рассылок
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-[var(--color-accent)]">—</span>
-                  Можно приложить файлы в переписке после первого ответа
-                </li>
-              </ul>
             </FadeIn>
-            <FadeIn className="min-w-0 lg:col-span-7" delay={0.06}>
+            <FadeIn className="mt-8" delay={0.05}>
               <div className="gradient-border rounded-2xl shadow-[var(--shadow-card)]">
                 <div className="gradient-border-inner p-6 sm:p-8">
                   <LeadForm submitLabel="Отправить" />
                 </div>
               </div>
             </FadeIn>
+            <p className="mt-5 text-center text-xs leading-relaxed text-[var(--color-ink-muted)] sm:text-sm">
+              Конфиденциально, без рассылок. Файлы можно направить в переписке после первого ответа.
+            </p>
           </div>
         </div>
       </section>
