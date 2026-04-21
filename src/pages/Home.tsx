@@ -20,7 +20,7 @@ export function Home() {
     <div>
       <Seo
         title="Правовое сопровождение бизнеса — Торопов Прав"
-        description="Команда юристов под руководством Марка Торопова. Юридические услуги для среднего бизнеса: договоры, ИС, Legal Design."
+        description="Команда юристов для среднего бизнеса: договоры, ИС, Legal Design, споры и корпоративное право."
       />
 
       <section className="gradient-mesh relative overflow-hidden border-b border-[var(--color-border)]">
@@ -46,8 +46,7 @@ export function Home() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-[42rem] text-base leading-relaxed text-[var(--color-ink-muted)] sm:text-lg">
-              Команда юристов под руководством Марка Торопова. Берём на себя юридическую сторону вашего бизнеса —
-              чтобы вы занимались бизнесом, а не бумагами.
+              Берём на себя юридическую сторону вашего бизнеса — чтобы вы занимались развитием, а не бумагами.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -63,7 +62,7 @@ export function Home() {
             </div>
 
             <p className="mx-auto mt-14 max-w-md text-xs leading-relaxed text-[var(--color-ink-muted)]/80">
-              Визуал: фото Марка с командой или живой рабочий момент — не стоковые люди в костюмах.
+              Визуал: команда или рабочий момент в офисе — деловой тон без штампованных корпоративных постановок.
             </p>
           </FadeIn>
         </div>
@@ -148,22 +147,21 @@ export function Home() {
             <div className="aspect-[4/5] max-w-md overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--color-border)] to-[var(--color-accent-soft)] lg:max-w-none">
               <div className="flex h-full items-end p-8">
                 <p className="text-sm text-[var(--color-ink-muted)]">
-                  Фото Марка: живой портрет, уверенный — не постановочный корпоратив.
+                  Визуал: офис или команда — нейтрально и по делу.
                 </p>
               </div>
             </div>
           </FadeIn>
           <FadeIn className="lg:col-span-7" delay={0.06}>
             <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-              Об основателе
+              О компании
             </h2>
-            <p className="mt-2 font-semibold text-[var(--color-ink)]">Марк Торопов — основатель и управляющий партнёр</p>
             <p className="mt-6 text-lg leading-relaxed text-[var(--color-ink-muted)]">
-              8 лет я строю команду, которая понимает бизнес, а не только право. Каждый юрист компании специализируется в
-              своей отрасли. Я лично контролирую качество каждого проекта.
+              Мы сопровождаем средний бизнес: договоры, интеллектуальная собственность, споры, Legal Design. Юристы
+              работают по направлениям и знают отраслевую специфику — от event и digital до HoReCa и IT.
             </p>
             <Link to="/about" className="mt-6 inline-block font-medium text-[var(--color-accent)] hover:underline">
-              О компании →
+              Подробнее о компании →
             </Link>
           </FadeIn>
         </div>
@@ -175,7 +173,7 @@ export function Home() {
             <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
               В цифрах
             </h2>
-            <p className="mt-2 text-sm text-[var(--color-ink-muted)]">Цифры уточняются с Марком — лучше скромные и точные.</p>
+            <p className="mt-2 text-sm text-[var(--color-ink-muted)]">Показатели обновляются по мере согласования.</p>
           </FadeIn>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -206,7 +204,7 @@ export function Home() {
         <div className="mt-10 space-y-4 text-[var(--color-ink-muted)]">
           {[
             'Заявка — опишите задачу, мы ответим в течение дня',
-            'Разбор — профильный юрист изучает ситуацию, Марк согласует стратегию',
+            'Разбор — профильный юрист изучает ситуацию, стратегию согласовывает руководство',
             'Работа — фиксированные сроки, понятный результат',
             'Поддержка — остаётесь на связи после закрытия задачи',
           ].map((line, i) => (

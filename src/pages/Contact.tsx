@@ -21,7 +21,7 @@ export function Contact() {
             <div>
               <dt className="text-sm font-semibold text-[var(--color-ink)]">Telegram</dt>
               <dd>
-                <span className="text-[var(--color-ink-muted)]">@username — указать контакт Марка</span>
+                <span className="text-[var(--color-ink-muted)]">@username — указать рабочий Telegram компании</span>
               </dd>
             </div>
             <div>
@@ -35,7 +35,7 @@ export function Contact() {
             </div>
             <div>
               <dt className="text-sm font-semibold text-[var(--color-ink)]">Телефон</dt>
-              <dd>По запросу или открыто — решение Марка</dd>
+              <dd>По запросу или в открытом доступе — по политике компании</dd>
             </div>
             <div>
               <dt className="text-sm font-semibold text-[var(--color-ink)]">Время ответа</dt>

@@ -9,8 +9,8 @@ export function Footer() {
             Торопов <span className="text-[var(--color-accent)]">Прав</span>
           </p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-[var(--color-ink-muted)]">
-            Правовое сопровождение бизнеса. Команда юристов под руководством Марка Торопова — договоры, ИС, Legal Design.
-            Фамилия в названии — личная ответственность основателя.
+            Правовое сопровождение бизнеса: договоры, интеллектуальная собственность, Legal Design, споры и корпоративное
+            право.
           </p>
         </div>
         <div className="flex flex-col gap-2 text-sm">
