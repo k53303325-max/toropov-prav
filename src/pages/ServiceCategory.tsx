@@ -5,10 +5,11 @@ import { LeadForm } from '../components/LeadForm'
 import { Seo } from '../components/Seo'
 import {
   isServiceCategorySlug,
-  serviceBulletGridClass,
   serviceCategoryDetails,
   serviceNavItems,
+  taskPath,
   type ServiceCategorySlug,
+  type ServiceTask,
 } from '../data/serviceCategories'
 
 function Breadcrumb({ title }: { title: string }) {
@@ -42,22 +43,26 @@ const WORK_STEPS = [
 
 const pageGutter = 'w-full max-w-[min(100%,90rem)] px-4 sm:px-10 lg:px-16 xl:px-24'
 
-function BulletGrid({ slug, items }: { slug: ServiceCategorySlug; items: string[] }) {
-  const grid = serviceBulletGridClass[slug]
-  const compact = slug === 'dogovory-i-sdelki'
+/** Договоры: 3 колонки × 6 рядов, ячейки одного размера. Остальные направления — адаптивная сетка из трёх колонок на lg. */
+function TaskLinkGrid({ slug, tasks }: { slug: ServiceCategorySlug; tasks: ServiceTask[] }) {
+  const isDogovory = slug === 'dogovory-i-sdelki'
+  /** 18 задач: ровно 3 колонки × 6 рядов, одинаковая высота ячеек */
+  const gridClass = isDogovory
+    ? 'mx-auto grid w-full max-w-5xl grid-cols-3 grid-rows-6 gap-2.5 [grid-template-rows:repeat(6,minmax(7.5rem,1fr))] sm:gap-3'
+    : 'mx-auto grid w-full max-w-5xl grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3'
+
+  const cellClass = [
+    'flex w-full items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-2 py-3 text-center text-[11px] font-medium leading-snug text-[var(--color-ink)] shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/35 hover:bg-[var(--color-accent-soft)]/25 sm:px-3 sm:text-sm',
+    isDogovory ? 'h-full min-h-0' : 'min-h-[7.5rem] sm:min-h-[8rem]',
+  ].join(' ')
 
   return (
-    <div className={`grid gap-2.5 sm:gap-3 ${grid}`}>
-      {items.map((b, i) => (
-        <FadeIn key={b} delay={Math.min(i * 0.02, 0.35)}>
-          <div
-            className={[
-              'flex min-h-[3.75rem] items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-2.5 py-2.5 text-center shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/20',
-              compact ? 'text-[11px] leading-snug sm:text-xs lg:text-[13px]' : 'text-[13px] leading-snug sm:text-sm',
-            ].join(' ')}
-          >
-            <span className="text-pretty text-[var(--color-ink)]">{b}</span>
-          </div>
+    <div className={gridClass}>
+      {tasks.map((t, i) => (
+        <FadeIn key={t.slug} delay={Math.min(i * 0.02, 0.35)}>
+          <Link to={taskPath(slug, t.slug)} className={cellClass}>
+            <span className="text-pretty">{t.title}</span>
+          </Link>
         </FadeIn>
       ))}
     </div>
@@ -89,7 +94,7 @@ export function ServiceCategory() {
           className="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-[var(--color-accent-soft)]/80 blur-3xl"
           aria-hidden
         />
-        <div className={`relative mx-auto ${pageGutter} pb-20 pt-10 sm:pb-28 sm:pt-12`}>
+        <div className={`relative mx-auto ${pageGutter} pb-14 pt-10 sm:pb-20 sm:pt-12`}>
           <FadeIn>
             <Breadcrumb title={detail.title} />
             <h1
@@ -111,21 +116,8 @@ export function ServiceCategory() {
       </section>
 
       <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className={`mx-auto ${pageGutter} py-14 lg:py-16`}>
-          <FadeIn>
-            <h2
-              className="w-full max-w-4xl text-2xl font-bold tracking-tight text-[var(--color-ink)] sm:text-3xl lg:max-w-5xl"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Типовые задачи
-            </h2>
-            <p className="mt-2 w-full max-w-3xl text-[var(--color-ink-muted)] lg:max-w-4xl">
-              Перечень ориентировочный — итоговый состав согласуем под ваш кейс.
-            </p>
-          </FadeIn>
-          <div className="mt-10">
-            <BulletGrid slug={slug} items={detail.bullets} />
-          </div>
+        <div className={`mx-auto ${pageGutter} py-12 lg:py-16`}>
+          <TaskLinkGrid slug={slug} tasks={detail.tasks} />
         </div>
       </section>
 

@@ -8,6 +8,11 @@ export type ServiceCategorySlug =
   | 'bankrotstvo'
   | 'ugolovnaya-zashchita-biznesa'
 
+export type ServiceTask = {
+  slug: string
+  title: string
+}
+
 export type ServiceNavItem = {
   /** Полный путь: /services/... или /legal-design */
   path: string
@@ -61,7 +66,7 @@ export const serviceNavItems: ServiceNavItem[] = [
 export type ServiceCategoryDetail = {
   title: string
   intro?: string
-  bullets: string[]
+  tasks: ServiceTask[]
 }
 
 export const serviceCategoryDetails: Record<ServiceCategorySlug, ServiceCategoryDetail> = {
@@ -69,98 +74,98 @@ export const serviceCategoryDetails: Record<ServiceCategorySlug, ServiceCategory
     title: 'Договоры и сделки',
     intro:
       'Подготовка, экспертиза и сопровождение договоров для бизнеса и частных клиентов. Грамотно оформим правовые отношения, минимизируем риски, защитим интересы.',
-    bullets: [
-      'Договор оказания услуг',
-      'Договор подряда (выполнение работ)',
-      'Договор поставки',
-      'Оферта',
-      'Рамочный договор на услуги / работы',
-      'Трудовой договор',
-      'Соглашение о неразглашении с работником / контрагентом (NDA)',
-      'Агентский договор',
-      'Договор аутстаффинга',
-      'Договор Time and Material',
-      'Договор по организации мероприятий',
-      'Соглашение о расторжении договора',
-      'Договор уступки права требования (цессия)',
-      'Договор отчуждения исключительного права',
-      'Договор авторского заказа',
-      'Договор коммерческой концессии (франчайзинга)',
-      'Абонентский договор',
-      'Опционный договор',
+    tasks: [
+      { slug: 'dogovor-okazaniya-uslug', title: 'Договор оказания услуг' },
+      { slug: 'dogovor-podryada', title: 'Договор подряда (выполнение работ)' },
+      { slug: 'dogovor-postavki', title: 'Договор поставки' },
+      { slug: 'oferta', title: 'Оферта' },
+      { slug: 'ramochnyj-dogovor', title: 'Рамочный договор на услуги / работы' },
+      { slug: 'trudovoj-dogovor', title: 'Трудовой договор' },
+      { slug: 'soglashenie-nda', title: 'Соглашение о неразглашении с работником / контрагентом (NDA)' },
+      { slug: 'agentskij-dogovor', title: 'Агентский договор' },
+      { slug: 'dogovor-autstaffinga', title: 'Договор аутстаффинга' },
+      { slug: 'dogovor-time-and-material', title: 'Договор Time and Material' },
+      { slug: 'dogovor-meropriyatij', title: 'Договор по организации мероприятий' },
+      { slug: 'soglashenie-o-rastorzhenii', title: 'Соглашение о расторжении договора' },
+      { slug: 'dogovor-cessii', title: 'Договор уступки права требования (цессия)' },
+      { slug: 'otchuzhdenie-isklyuchitelnogo-prava', title: 'Договор отчуждения исключительного права' },
+      { slug: 'dogovor-avtorskogo-zakaza', title: 'Договор авторского заказа' },
+      { slug: 'dogovor-franchajzinga', title: 'Договор коммерческой концессии (франчайзинга)' },
+      { slug: 'abonentskij-dogovor', title: 'Абонентский договор' },
+      { slug: 'optsionnyj-dogovor', title: 'Опционный договор' },
     ],
   },
   'korporativnye-voprosy': {
     title: 'Корпоративные вопросы',
-    bullets: [
-      'Регистрация, структурирование, реорганизация, ликвидация бизнеса',
-      'Регистрация ООО под ключ',
-      'Регистрация АО под ключ',
-      'Регистрация ИП под ключ',
-      'Правовой аудит (due diligence)',
-      'Оформление инвестиций',
-      'Слияние и поглощение (M&A)',
-      'Сделки с долями',
-      'Корпоративные споры',
+    tasks: [
+      { slug: 'registraciya-struktura-likvidaciya', title: 'Регистрация, структурирование, реорганизация, ликвидация бизнеса' },
+      { slug: 'registraciya-ooo', title: 'Регистрация ООО под ключ' },
+      { slug: 'registraciya-ao', title: 'Регистрация АО под ключ' },
+      { slug: 'registraciya-ip', title: 'Регистрация ИП под ключ' },
+      { slug: 'due-diligence', title: 'Правовой аудит (due diligence)' },
+      { slug: 'oformlenie-investicij', title: 'Оформление инвестиций' },
+      { slug: 'sliyanie-pogloshchenie', title: 'Слияние и поглощение (M&A)' },
+      { slug: 'sdelki-s-dolyami', title: 'Сделки с долями' },
+      { slug: 'korporativnye-spory', title: 'Корпоративные споры' },
     ],
   },
   'predstavitelstvo': {
     title: 'Представительство',
-    bullets: [
-      'Досудебное урегулирование споров',
-      'Арбитражные споры',
-      'Споры в третейских судах',
-      'Споры с государственными органами',
-      'Споры в ФАС',
-      'Споры в Суде по интеллектуальным правам',
-      'Взыскание задолженности',
+    tasks: [
+      { slug: 'dosudebnoe-uregulirovanie', title: 'Досудебное урегулирование споров' },
+      { slug: 'arbitrazhnye-spory', title: 'Арбитражные споры' },
+      { slug: 'tretejskij-sud', title: 'Споры в третейских судах' },
+      { slug: 'spory-gosorgany', title: 'Споры с государственными органами' },
+      { slug: 'spory-fas', title: 'Споры в ФАС' },
+      { slug: 'spory-sip', title: 'Споры в Суде по интеллектуальным правам' },
+      { slug: 'vzyskanie-zadolzhennosti', title: 'Взыскание задолженности' },
     ],
   },
   'intellektualnaya-sobstvennost': {
     title: 'Интеллектуальная собственность',
-    bullets: [
-      'Оформление прав на интеллектуальную собственность',
-      'Разработка договоров в сфере ИС',
-      'Регистрация товарного знака и патентование',
-      'Защита коммерческой тайны',
-      'Защита интеллектуальной собственности в интернете',
+    tasks: [
+      { slug: 'oformlenie-prav-is', title: 'Оформление прав на интеллектуальную собственность' },
+      { slug: 'dogovory-v-sfere-is', title: 'Разработка договоров в сфере ИС' },
+      { slug: 'tm-patenty', title: 'Регистрация товарного знака и патентование' },
+      { slug: 'kommercheskaya-tajna', title: 'Защита коммерческой тайны' },
+      { slug: 'zashchita-is-internet', title: 'Защита интеллектуальной собственности в интернете' },
     ],
   },
   'zakupki-i-tendery': {
     title: 'Закупки и тендеры',
-    bullets: ['Экспертиза контрактов', 'Обжалование результатов закупок', 'Жалоба в ФАС', 'Защита от включения в РНП'],
+    tasks: [
+      { slug: 'ekspertiza-kontraktov', title: 'Экспертиза контрактов' },
+      { slug: 'obzhalovanie-zakupok', title: 'Обжалование результатов закупок' },
+      { slug: 'zhaloba-fas', title: 'Жалоба в ФАС' },
+      { slug: 'zashchita-rnp', title: 'Защита от включения в РНП' },
+    ],
   },
   'bankrotstvo': {
     title: 'Банкротство',
-    bullets: ['Банкротство физических лиц', 'Банкротство юридических лиц', 'Защита от субсидиарной ответственности'],
+    tasks: [
+      { slug: 'bankrotstvo-fizlic', title: 'Банкротство физических лиц' },
+      { slug: 'bankrotstvo-yurlic', title: 'Банкротство юридических лиц' },
+      { slug: 'subsidarnaya-otvetstvennost', title: 'Защита от субсидиарной ответственности' },
+    ],
   },
   'ugolovnaya-zashchita-biznesa': {
     title: 'Уголовная защита бизнеса и собственников',
     intro:
       'Защита руководителей и владельцев бизнеса по экономическим и предпринимательским статьям.',
-    bullets: [
-      'Защита на стадии проверки и следствия',
-      'Представительство в суде',
-      'Минимизация рисков уголовного преследования',
+    tasks: [
+      { slug: 'zashchita-proverka-sledstvie', title: 'Защита на стадии проверки и следствия' },
+      { slug: 'predstavitelstvo-sud', title: 'Представительство в суде' },
+      { slug: 'minimizaciya-riskov', title: 'Минимизация рисков уголовного преследования' },
     ],
   },
 }
 
-/** Классы Tailwind для сетки пунктов (без длинных одноколоночных списков) */
-export const serviceBulletGridClass: Record<ServiceCategorySlug, string> = {
-  /** 18 пунктов: 6×3 на lg+ */
-  'dogovory-i-sdelki': 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6',
-  /** 9 пунктов: 3×3 */
-  'korporativnye-voprosy': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-  /** 7 пунктов */
-  'predstavitelstvo': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
-  /** 5 пунктов */
-  'intellektualnaya-sobstvennost': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-  /** 4 пункта: 2×2 */
-  'zakupki-i-tendery': 'grid-cols-1 sm:grid-cols-2',
-  /** 3 пункта в ряд */
-  'bankrotstvo': 'grid-cols-1 sm:grid-cols-3',
-  'ugolovnaya-zashchita-biznesa': 'grid-cols-1 sm:grid-cols-3',
+export function taskPath(categorySlug: ServiceCategorySlug, taskSlug: string) {
+  return `/services/${categorySlug}/${taskSlug}`
+}
+
+export function findTask(category: ServiceCategorySlug, taskSlug: string): ServiceTask | undefined {
+  return serviceCategoryDetails[category].tasks.find((t) => t.slug === taskSlug)
 }
 
 export function isServiceCategorySlug(s: string): s is ServiceCategorySlug {
