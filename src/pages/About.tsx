@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FadeIn } from '../components/FadeIn'
 import { Button } from '../components/Button'
 import { Seo } from '../components/Seo'
@@ -25,7 +26,7 @@ export function About() {
     <div>
       <Seo
         title="О компании — Торопов Прав | Правовое сопровождение бизнеса"
-        description="Торопов Прав — юридическая компания для бизнеса. 8 лет на рынке, специализация: digital, event, HoReCa, IT, стартапы. Команда юристов по направлениям."
+        description="Торопов Прав — команда юристов для бизнеса. Основатель — Марк Торопов: сделки, споры, Legal Design, IT и digital. О компании и подходе."
       />
 
       <div className="w-full px-4 py-16 sm:px-8 lg:px-12 sm:py-20">
@@ -53,28 +54,44 @@ export function About() {
           </FadeIn>
         </section>
 
-        <section className="mt-20 grid gap-12 lg:grid-cols-12">
+        <section className="mt-20 grid gap-12 lg:grid-cols-12 lg:items-start">
           <FadeIn className="lg:col-span-5">
-            <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--color-border)] to-[var(--color-accent-soft)]">
-              <div className="flex h-full items-end p-8">
-                <p className="text-sm text-[var(--color-ink-muted)]">Визуал для раздела об основателе — деловой портрет.</p>
-              </div>
+            <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-card)]">
+              <img
+                src="/mark-toropov.png"
+                alt="Марк Торопов, основатель и управляющий партнёр"
+                className="aspect-[3/4] w-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </FadeIn>
           <FadeIn className="lg:col-span-7" delay={0.06}>
             <h2 className="text-2xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
               Об основателе
             </h2>
-            <p className="mt-2 font-semibold text-[var(--color-ink)]">Марк Торопов — основатель и управляющий партнёр</p>
-            <blockquote className="mt-6 border-l-4 border-[var(--color-accent)] pl-6 text-lg font-medium leading-relaxed text-[var(--color-ink)]">
-              Право должно помогать бизнесу расти, а не тормозить его
-            </blockquote>
-            <div className="mt-8 space-y-4 text-[var(--color-ink-muted)]">
+            <p className="mt-3 font-semibold text-[var(--color-ink)]">Марк Торопов — основатель и управляющий партнёр</p>
+            <div className="mt-8 space-y-5 text-lg leading-relaxed text-[var(--color-ink-muted)]">
               <p>
-                Краткая биография: путь в профессии, опыт работы с бизнесом, как сформировался состав команды и направления
-                Legal Design. Текст — нейтральный, по делу.
+                Марк Торопов — юрист с более чем 7-летним опытом сопровождения бизнеса. Специализируется на работе с малым и
+                средним бизнесом, IT- и digital-компаниями, а также корпоративными структурами.
               </p>
-              <p className="text-sm italic">Вставьте 2–3 абзаца финального текста от основателя.</p>
+              <p>
+                В его практике — комплексное сопровождение коммерческих проектов: структурирование бизнеса, сопровождение
+                сделок и инвестиций, ведение переговоров и представление интересов в арбитражных судах.
+              </p>
+              <p>
+                Подход Марка основан на глубоком понимании бизнес-процессов. Он рассматривает юридические задачи в контексте
+                экономики и стратегии компании, предлагая решения, которые одновременно защищают интересы и поддерживают
+                развитие бизнеса.
+              </p>
+              <p>
+                В работе он сочетает классическую юридическую экспертизу с современными инструментами: применяет принципы{' '}
+                <Link to="/legal-design" className="font-medium text-[var(--color-accent)] underline-offset-2 hover:underline">
+                  Legal Design
+                </Link>{' '}
+                и использует ИИ для анализа и подготовки правовых позиций.
+              </p>
             </div>
           </FadeIn>
         </section>
