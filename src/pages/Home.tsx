@@ -12,7 +12,6 @@ const industries = [
   'Стартапы',
   'Контентмейкеры',
   'IT-продукты и платформы',
-  'Онлайн-сервисы',
 ]
 
 const processSteps = [
@@ -146,7 +145,7 @@ export function Home() {
               риски изнутри.
             </p>
           </FadeIn>
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-4 sm:gap-6">
             {industries.map((label, i) => (
               <FadeIn key={label} delay={Math.min(i * 0.04, 0.28)}>
                 <div className="flex h-full min-h-[10.5rem] flex-col items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 text-center shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/25 sm:min-h-[12rem] sm:p-8">
@@ -177,7 +176,7 @@ export function Home() {
               { n: '8 лет', d: 'На рынке правового сопровождения бизнеса' },
               { n: '200+', d: 'Клиентов — компаний и предпринимателей' },
               { n: '500+', d: 'Договоров составлено и проверено' },
-              { n: '7', d: 'Отраслей специализации' },
+              { n: '6', d: 'Отраслей специализации' },
             ].map((x, i) => (
               <FadeIn key={x.n} delay={i * 0.05}>
                 <div className="min-h-[10rem] rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-8 text-center shadow-[var(--shadow-card)] sm:min-h-[11rem]">
