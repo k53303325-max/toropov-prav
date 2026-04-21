@@ -92,19 +92,19 @@ export function Home() {
       {/* Компания и основатель */}
       <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
         <div className={`${pagePad} py-16 sm:py-20 lg:py-24`}>
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
-            <FadeIn className="flex justify-center lg:col-span-4 lg:justify-start">
-              <div className="w-full max-w-[220px] overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-card)] sm:max-w-[260px] lg:max-w-[min(100%,280px)]">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)] lg:items-start lg:gap-14 xl:gap-16">
+            <FadeIn className="flex justify-center lg:justify-start">
+              <div className="w-full max-w-[260px] shrink-0 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-card)] lg:max-w-[280px]">
                 <img
                   src="/mark-toropov.png"
                   alt="Марк Торопов, основатель и управляющий партнёр"
-                  className="aspect-[3/4] w-full object-cover object-[center_18%]"
+                  className="aspect-[3/4] h-auto max-h-[min(340px,52vh)] w-full object-cover object-[center_16%] lg:max-h-[360px]"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
             </FadeIn>
-            <FadeIn className="lg:col-span-8" delay={0.06}>
+            <FadeIn className="min-w-0" delay={0.06}>
               <h2
                 className="text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl"
                 style={{ fontFamily: 'var(--font-display)' }}
