@@ -12,29 +12,6 @@ import {
   type ServiceTask,
 } from '../data/serviceCategories'
 
-function Breadcrumb({ title }: { title: string }) {
-  return (
-    <nav className="flex flex-wrap items-center gap-2 text-sm text-[var(--color-ink-muted)]" aria-label="Навигация">
-      <Link
-        to="/"
-        className="rounded-lg px-1.5 py-0.5 font-medium text-[var(--color-ink-muted)] transition hover:bg-[var(--color-accent-soft)]/50 hover:text-[var(--color-ink)]"
-      >
-        Главная
-      </Link>
-      <ChevronIcon className="h-3.5 w-3.5 shrink-0 opacity-50" aria-hidden />
-      <span className="font-medium text-[var(--color-ink)]">{title}</span>
-    </nav>
-  )
-}
-
-function ChevronIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-    </svg>
-  )
-}
-
 const WORK_STEPS = [
   { step: '01', title: 'Заявка', text: 'Кратко опишите задачу — ответим в течение рабочего дня.' },
   { step: '02', title: 'Разбор', text: 'Согласуем объём работ, сроки и формат взаимодействия.' },
@@ -96,9 +73,8 @@ export function ServiceCategory() {
         />
         <div className={`relative mx-auto ${pageGutter} pb-14 pt-10 sm:pb-20 sm:pt-12`}>
           <FadeIn>
-            <Breadcrumb title={detail.title} />
             <h1
-              className="mt-10 w-full max-w-5xl text-[2.35rem] font-medium leading-[1.06] tracking-tight text-[var(--color-ink)] sm:text-5xl sm:leading-[1.05] lg:text-[3.35rem]"
+              className="w-full max-w-5xl text-[2.35rem] font-medium leading-[1.06] tracking-tight text-[var(--color-ink)] sm:text-5xl sm:leading-[1.05] lg:text-[3.35rem]"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               {detail.title}
