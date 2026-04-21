@@ -1,17 +1,25 @@
 import { Link } from 'react-router-dom'
 import { FadeIn } from '../components/FadeIn'
 import { Button } from '../components/Button'
+import {
+  IconContent,
+  IconDigital,
+  IconEvent,
+  IconHoReCa,
+  IconIt,
+  IconStartup,
+} from '../components/IndustryIcons'
 import { LeadForm } from '../components/LeadForm'
 import { Seo } from '../components/Seo'
 
-/** Каждая отрасль — отдельная карточка */
+/** Каждая отрасль — карточка с иконкой слева */
 const industries = [
-  'Event и мероприятия',
-  'Digital-продукты',
-  'HoReCa',
-  'Стартапы',
-  'Контентмейкеры',
-  'IT-продукты и платформы',
+  { label: 'Event и мероприятия', Icon: IconEvent },
+  { label: 'Digital-продукты', Icon: IconDigital },
+  { label: 'HoReCa', Icon: IconHoReCa },
+  { label: 'Стартапы', Icon: IconStartup },
+  { label: 'Контентмейкеры', Icon: IconContent },
+  { label: 'IT-продукты и платформы', Icon: IconIt },
 ]
 
 const processSteps = [
@@ -145,13 +153,18 @@ export function Home() {
               риски изнутри.
             </p>
           </FadeIn>
-          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-4 sm:gap-6">
-            {industries.map((label, i) => (
+          <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
+            {industries.map(({ label, Icon }, i) => (
               <FadeIn key={label} delay={Math.min(i * 0.04, 0.28)}>
-                <div className="flex h-full min-h-[10.5rem] flex-col items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 text-center shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/25 sm:min-h-[12rem] sm:p-8">
-                  <span className="mb-3 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden />
+                <div className="flex h-full min-h-[5.5rem] flex-row items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/25 sm:min-h-[6rem] sm:gap-4 sm:p-5">
+                  <div
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--color-accent)]/12 text-[var(--color-accent)] sm:h-12 sm:w-12"
+                    aria-hidden
+                  >
+                    <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
+                  </div>
                   <h3
-                    className="text-balance text-lg font-semibold leading-snug text-[var(--color-ink)] sm:text-xl lg:text-[1.35rem] lg:leading-tight"
+                    className="text-balance text-left text-base font-semibold leading-snug text-[var(--color-ink)] sm:text-lg"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     {label}
