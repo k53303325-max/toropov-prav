@@ -4,24 +4,16 @@ import { Button } from '../components/Button'
 import { LeadForm } from '../components/LeadForm'
 import { Seo } from '../components/Seo'
 
-/** 8 направлений → 4 крупные карточки 2×2 */
-const industryCards = [
-  {
-    title: 'Event и digital',
-    items: ['Event и мероприятия', 'Digital-продукты'],
-  },
-  {
-    title: 'HoReCa и стартапы',
-    items: ['HoReCa', 'Стартапы'],
-  },
-  {
-    title: 'Контент и IT',
-    items: ['Контентмейкеры', 'IT-продукты и платформы'],
-  },
-  {
-    title: 'Онлайн и защита бизнеса',
-    items: ['Онлайн-сервисы', 'Уголовная защита бизнеса и собственников'],
-  },
+/** Каждая отрасль — отдельная карточка */
+const industries = [
+  'Event и мероприятия',
+  'Digital-продукты',
+  'HoReCa',
+  'Стартапы',
+  'Контентмейкеры',
+  'IT-продукты и платформы',
+  'Онлайн-сервисы',
+  'Уголовная защита бизнеса и собственников',
 ]
 
 const processSteps = [
@@ -157,7 +149,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Отрасли — 2×2 крупные карточки */}
+      {/* Отрасли — 8 отдельных карточек */}
       <section className="border-b border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
         <div className={`${pagePad} py-16 sm:py-20 lg:py-24`}>
           <FadeIn>
@@ -172,21 +164,17 @@ export function Home() {
               риски изнутри.
             </p>
           </FadeIn>
-          <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2">
-            {industryCards.map((card, i) => (
-              <FadeIn key={card.title} delay={i * 0.05}>
-                <div className="flex h-full min-h-[11rem] flex-col justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-[var(--shadow-card)] sm:min-h-[12rem] sm:p-10">
-                  <h3 className="text-xl font-bold text-[var(--color-ink)] sm:text-2xl" style={{ fontFamily: 'var(--font-display)' }}>
-                    {card.title}
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            {industries.map((label, i) => (
+              <FadeIn key={label} delay={Math.min(i * 0.04, 0.28)}>
+                <div className="flex h-full min-h-[9.5rem] flex-col items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/25 sm:min-h-[11rem] sm:p-7">
+                  <span className="mb-3 h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden />
+                  <h3
+                    className="text-balance text-base font-semibold leading-snug text-[var(--color-ink)] sm:text-lg"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {label}
                   </h3>
-                  <ul className="mt-5 space-y-3 text-base leading-snug text-[var(--color-ink-muted)] sm:text-lg">
-                    {card.items.map((line) => (
-                      <li key={line} className="flex gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden />
-                        <span>{line}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </FadeIn>
             ))}
