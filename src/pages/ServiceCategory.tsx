@@ -3,7 +3,13 @@ import { FadeIn } from '../components/FadeIn'
 import { Button } from '../components/Button'
 import { LeadForm } from '../components/LeadForm'
 import { Seo } from '../components/Seo'
-import { isServiceCategorySlug, serviceCategoryDetails, serviceNavItems } from '../data/serviceCategories'
+import {
+  isServiceCategorySlug,
+  serviceBulletGridClass,
+  serviceCategoryDetails,
+  serviceNavItems,
+  type ServiceCategorySlug,
+} from '../data/serviceCategories'
 
 function Breadcrumb({ title }: { title: string }) {
   return (
@@ -35,6 +41,28 @@ const WORK_STEPS = [
 ]
 
 const pageGutter = 'w-full max-w-[min(100%,90rem)] px-4 sm:px-10 lg:px-16 xl:px-24'
+
+function BulletGrid({ slug, items }: { slug: ServiceCategorySlug; items: string[] }) {
+  const grid = serviceBulletGridClass[slug]
+  const compact = slug === 'dogovory-i-sdelki'
+
+  return (
+    <div className={`grid gap-2.5 sm:gap-3 ${grid}`}>
+      {items.map((b, i) => (
+        <FadeIn key={b} delay={Math.min(i * 0.02, 0.35)}>
+          <div
+            className={[
+              'flex min-h-[3.75rem] items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-2.5 py-2.5 text-center shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/20',
+              compact ? 'text-[11px] leading-snug sm:text-xs lg:text-[13px]' : 'text-[13px] leading-snug sm:text-sm',
+            ].join(' ')}
+          >
+            <span className="text-pretty text-[var(--color-ink)]">{b}</span>
+          </div>
+        </FadeIn>
+      ))}
+    </div>
+  )
+}
 
 export function ServiceCategory() {
   const { slug = '' } = useParams<{ slug: string }>()
@@ -79,6 +107,25 @@ export function ServiceCategory() {
               <Button to="/contact">Обсудить задачу</Button>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div className={`mx-auto ${pageGutter} py-14 lg:py-16`}>
+          <FadeIn>
+            <h2
+              className="w-full max-w-4xl text-2xl font-bold tracking-tight text-[var(--color-ink)] sm:text-3xl lg:max-w-5xl"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Типовые задачи
+            </h2>
+            <p className="mt-2 w-full max-w-3xl text-[var(--color-ink-muted)] lg:max-w-4xl">
+              Перечень ориентировочный — итоговый состав согласуем под ваш кейс.
+            </p>
+          </FadeIn>
+          <div className="mt-10">
+            <BulletGrid slug={slug} items={detail.bullets} />
+          </div>
         </div>
       </section>
 

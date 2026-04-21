@@ -146,6 +146,23 @@ export const serviceCategoryDetails: Record<ServiceCategorySlug, ServiceCategory
   },
 }
 
+/** Классы Tailwind для сетки пунктов (без длинных одноколоночных списков) */
+export const serviceBulletGridClass: Record<ServiceCategorySlug, string> = {
+  /** 18 пунктов: 6×3 на lg+ */
+  'dogovory-i-sdelki': 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6',
+  /** 9 пунктов: 3×3 */
+  'korporativnye-voprosy': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+  /** 7 пунктов */
+  'predstavitelstvo': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+  /** 5 пунктов */
+  'intellektualnaya-sobstvennost': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+  /** 4 пункта: 2×2 */
+  'zakupki-i-tendery': 'grid-cols-1 sm:grid-cols-2',
+  /** 3 пункта в ряд */
+  'bankrotstvo': 'grid-cols-1 sm:grid-cols-3',
+  'ugolovnaya-zashchita-biznesa': 'grid-cols-1 sm:grid-cols-3',
+}
+
 export function isServiceCategorySlug(s: string): s is ServiceCategorySlug {
   return s in serviceCategoryDetails
 }
