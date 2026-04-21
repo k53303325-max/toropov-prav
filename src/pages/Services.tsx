@@ -1,107 +1,8 @@
-import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { FadeIn } from '../components/FadeIn'
 import { Button } from '../components/Button'
 import { Seo } from '../components/Seo'
-
-const sections: { title: string; intro?: string; bullets: string[]; foot?: ReactNode }[] = [
-  {
-    title: 'Договоры и сделки',
-    intro:
-      'Подготовка, экспертиза и сопровождение договоров для бизнеса и частных клиентов. Грамотно оформим правовые отношения, минимизируем риски, защитим интересы.',
-    bullets: [
-      'Договор оказания услуг',
-      'Договор подряда (выполнение работ)',
-      'Договор поставки',
-      'Оферта',
-      'Рамочный договор на услуги / работы',
-      'Трудовой договор',
-      'Соглашение о неразглашении с работником / контрагентом (NDA)',
-      'Агентский договор',
-      'Договор аутстаффинга',
-      'Договор Time and Material',
-      'Договор по организации мероприятий',
-      'Соглашение о расторжении договора',
-      'Договор уступки права требования (цессия)',
-      'Договор отчуждения исключительного права',
-      'Договор авторского заказа',
-      'Договор коммерческой концессии (франчайзинга)',
-      'Абонентский договор',
-      'Опционный договор',
-    ],
-  },
-  {
-    title: 'Корпоративные вопросы',
-    bullets: [
-      'Регистрация, структурирование, реорганизация, ликвидация бизнеса',
-      'Регистрация ООО под ключ',
-      'Регистрация АО под ключ',
-      'Регистрация ИП под ключ',
-      'Правовой аудит (due diligence)',
-      'Оформление инвестиций',
-      'Слияние и поглощение (M&A)',
-      'Сделки с долями',
-      'Корпоративные споры',
-    ],
-  },
-  {
-    title: 'Представительство',
-    bullets: [
-      'Досудебное урегулирование споров',
-      'Арбитражные споры',
-      'Споры в третейских судах',
-      'Споры с государственными органами',
-      'Споры в ФАС',
-      'Споры в Суде по интеллектуальным правам',
-      'Взыскание задолженности',
-    ],
-  },
-  {
-    title: 'Интеллектуальная собственность',
-    bullets: [
-      'Оформление прав на интеллектуальную собственность',
-      'Разработка договоров в сфере ИС',
-      'Регистрация товарного знака и патентование',
-      'Защита коммерческой тайны',
-      'Защита интеллектуальной собственности в интернете',
-    ],
-  },
-  {
-    title: 'Закупки и тендеры',
-    bullets: ['Экспертиза контрактов', 'Обжалование результатов закупок', 'Жалоба в ФАС', 'Защита от включения в РНП'],
-  },
-  {
-    title: 'Банкротство',
-    bullets: ['Банкротство физических лиц', 'Банкротство юридических лиц', 'Защита от субсидиарной ответственности'],
-  },
-  {
-    title: 'Legal Design',
-    intro:
-      'Разрабатываем понятные документы — сохраняем их юридическую основу, убираем всё что мешает читать и выполнять.',
-    bullets: [
-      'Реинжиниринг — переработка структуры и логики документа',
-      'Дизайн — визуальное оформление: схемы, таблицы, иконки',
-      'Оптимизация — упрощение языка без потери юридической силы',
-    ],
-    foot: (
-      <p className="mt-4">
-        <Link to="/legal-design" className="font-medium text-[var(--color-accent)] hover:underline">
-          Подробнее о Legal Design →
-        </Link>
-      </p>
-    ),
-  },
-  {
-    title: 'Уголовная защита бизнеса и собственников',
-    intro:
-      'Защита руководителей и владельцев бизнеса по экономическим и предпринимательским статьям.',
-    bullets: [
-      'Защита на стадии проверки и следствия',
-      'Представительство в суде',
-      'Минимизация рисков уголовного преследования',
-    ],
-  },
-]
+import { serviceNavItems } from '../data/serviceCategories'
 
 export function Services() {
   return (
@@ -111,32 +12,30 @@ export function Services() {
         description="Договоры и сделки, интеллектуальная собственность, корпоративное право, Legal Design, уголовная защита бизнеса. Правовое сопровождение среднего бизнеса."
       />
       <FadeIn>
-        <h1 className="text-4xl font-bold tracking-tight text-[var(--color-ink)] sm:text-5xl" style={{ fontFamily: 'var(--font-display)' }}>
-          Полный спектр юридических услуг для бизнеса
-        </h1>
-        <p className="mt-4 max-w-2xl text-lg text-[var(--color-ink-muted)]">
-          Команда «Торопов Прав» ведёт проекты по всем перечисленным направлениям — от договоров до Legal Design.
+        <p className="max-w-2xl text-lg text-[var(--color-ink-muted)]">
+          Команда «Торопов Прав» ведёт проекты по всем перечисленным направлениям — от договоров до Legal Design. Выберите
+          раздел, чтобы посмотреть состав работ.
         </p>
       </FadeIn>
 
-      <div className="mt-14 space-y-10">
-        {sections.map((s, i) => (
-          <FadeIn key={s.title} delay={i * 0.03}>
-            <section className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-8 shadow-[var(--shadow-card)]">
-              <h2 className="text-2xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-                {s.title}
+      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        {serviceNavItems.map((item, i) => (
+          <FadeIn key={item.path} delay={i * 0.03}>
+            <Link
+              to={item.path}
+              className="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/35"
+            >
+              <h2
+                className="text-xl font-bold text-[var(--color-ink)] group-hover:text-[var(--color-accent)]"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                {item.title}
               </h2>
-              {s.intro && <p className="mt-4 text-[var(--color-ink-muted)]">{s.intro}</p>}
-              <ul className="mt-4 space-y-2 text-[var(--color-ink-muted)]">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex gap-2">
-                    <span className="text-[var(--color-accent)]">—</span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              {s.foot}
-            </section>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-muted)]">{item.shortDescription}</p>
+              <span className="mt-4 inline-block text-sm font-medium text-[var(--color-accent)] group-hover:underline">
+                Подробнее →
+              </span>
+            </Link>
           </FadeIn>
         ))}
       </div>

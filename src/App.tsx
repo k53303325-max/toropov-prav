@@ -6,6 +6,7 @@ import { Cases } from './pages/Cases'
 import { Contact } from './pages/Contact'
 import { Home } from './pages/Home'
 import { LegalDesign } from './pages/LegalDesign'
+import { ServiceCategory } from './pages/ServiceCategory'
 import { Services } from './pages/Services'
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="services/:slug" element={<ServiceCategory />} />
           <Route path="services" element={<Services />} />
           <Route path="legal-design" element={<LegalDesign />} />
           <Route path="about" element={<About />} />

@@ -80,11 +80,13 @@ export function Home() {
               title: 'Договоры и сделки',
               quote: 'Грамотно оформим правовые отношения, минимизируем риски',
               line: 'Подготовка, экспертиза, сопровождение',
+              link: '/services/dogovory-i-sdelki',
             },
             {
               title: 'Интеллектуальная собственность',
               quote: 'Ваш продукт, бренд и контент — юридически защищённые активы',
               line: 'ТМ, авторские права, лицензии, защита в интернете',
+              link: '/services/intellektualnaya-sobstvennost',
             },
             {
               title: 'Legal Design',
@@ -98,15 +100,9 @@ export function Home() {
                 <h3 className="text-lg font-semibold text-[var(--color-ink)]">{c.title}</h3>
                 <p className="mt-3 text-[var(--color-ink-muted)]">«{c.quote}»</p>
                 <p className="mt-2 text-sm text-[var(--color-ink-muted)]">{c.line}</p>
-                {c.link ? (
-                  <Link to={c.link} className="mt-auto pt-6 text-sm font-medium text-[var(--color-accent)] hover:underline">
-                    Подробнее →
-                  </Link>
-                ) : (
-                  <Link to="/services" className="mt-auto pt-6 text-sm font-medium text-[var(--color-accent)] hover:underline">
-                    Смотреть в услугах →
-                  </Link>
-                )}
+                <Link to={c.link} className="mt-auto pt-6 text-sm font-medium text-[var(--color-accent)] hover:underline">
+                  Подробнее →
+                </Link>
               </div>
             </FadeIn>
           ))}
