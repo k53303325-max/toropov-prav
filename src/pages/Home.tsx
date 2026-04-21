@@ -225,15 +225,16 @@ export function Home() {
             {processSteps.map((s, i) => (
               <FadeIn key={s.title} delay={i * 0.06}>
                 <div className="flex h-full min-h-[13rem] flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-[var(--shadow-card)] sm:min-h-[14rem] sm:p-10">
-                  <span
-                    className="text-4xl font-medium tabular-nums leading-none text-[var(--color-accent)]/40"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                    aria-hidden
-                  >
-                    {s.n}.
-                  </span>
-                  <h3 className="mt-4 text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">{s.title}</h3>
-                  <p className="mt-3 flex-1 text-base leading-relaxed text-[var(--color-ink-muted)] sm:text-lg">{s.text}</p>
+                  <h3 className="flex flex-wrap items-baseline gap-x-2 gap-y-1 sm:gap-x-3">
+                    <span
+                      className="shrink-0 text-4xl font-medium tabular-nums leading-none text-[var(--color-accent)]/40"
+                      style={{ fontFamily: 'var(--font-display)' }}
+                    >
+                      {s.n}.
+                    </span>
+                    <span className="text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">{s.title}</span>
+                  </h3>
+                  <p className="mt-4 flex-1 text-base leading-relaxed text-[var(--color-ink-muted)] sm:text-lg">{s.text}</p>
                 </div>
               </FadeIn>
             ))}
