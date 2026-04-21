@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { About } from './pages/About'
 import { Blog } from './pages/Blog'
 import { Cases } from './pages/Cases'
 import { Contact } from './pages/Contact'
@@ -20,7 +19,7 @@ export default function App() {
           <Route path="services/:slug" element={<ServiceCategory />} />
           <Route path="services" element={<Services />} />
           <Route path="legal-design" element={<LegalDesign />} />
-          <Route path="about" element={<About />} />
+          <Route path="about" element={<Navigate to="/" replace />} />
           <Route path="cases" element={<Cases />} />
           <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />

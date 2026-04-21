@@ -4,27 +4,61 @@ import { Button } from '../components/Button'
 import { LeadForm } from '../components/LeadForm'
 import { Seo } from '../components/Seo'
 
-const industries = [
-  'Event и мероприятия',
-  'Digital-продукты',
-  'HoReCa',
-  'Стартапы',
-  'Контентмейкеры',
-  'IT-продукты и платформы',
-  'Онлайн-сервисы',
-  'Уголовная защита бизнеса и собственников',
+/** 8 направлений → 4 крупные карточки 2×2 */
+const industryCards = [
+  {
+    title: 'Event и digital',
+    items: ['Event и мероприятия', 'Digital-продукты'],
+  },
+  {
+    title: 'HoReCa и стартапы',
+    items: ['HoReCa', 'Стартапы'],
+  },
+  {
+    title: 'Контент и IT',
+    items: ['Контентмейкеры', 'IT-продукты и платформы'],
+  },
+  {
+    title: 'Онлайн и защита бизнеса',
+    items: ['Онлайн-сервисы', 'Уголовная защита бизнеса и собственников'],
+  },
 ]
+
+const processSteps = [
+  {
+    n: 1,
+    title: 'Заявка',
+    text: 'Опишите задачу — ответим в течение рабочего дня.',
+  },
+  {
+    n: 2,
+    title: 'Разбор',
+    text: 'Профильный юрист изучает ситуацию, стратегию согласовывает руководство.',
+  },
+  {
+    n: 3,
+    title: 'Работа',
+    text: 'Фиксированные сроки, понятный результат.',
+  },
+  {
+    n: 4,
+    title: 'Поддержка',
+    text: 'Остаётесь на связи после закрытия задачи.',
+  },
+]
+
+const pagePad = 'w-full max-w-[min(100%,90rem)] px-4 sm:px-8 lg:px-12'
 
 export function Home() {
   return (
     <div>
       <Seo
         title="Правовое сопровождение бизнеса — Торопов Прав"
-        description="Команда юристов для среднего бизнеса: договоры, ИС, Legal Design, споры и корпоративное право."
+        description="Торопов Прав — команда юристов для бизнеса. Основатель Марк Торопов. Договоры, ИС, Legal Design, споры. Средний бизнес, IT и digital."
       />
 
       <section className="gradient-mesh relative overflow-hidden border-b border-[var(--color-border)]">
-        <div className="w-full px-4 py-24 text-center sm:px-8 lg:px-12 sm:py-32 lg:py-40">
+        <div className={`${pagePad} py-24 text-center sm:py-32 lg:py-40`}>
           <FadeIn>
             <Link
               to="/legal-design"
@@ -60,113 +94,110 @@ export function Home() {
                 Наши услуги
               </Button>
             </div>
-
-            <p className="mx-auto mt-14 max-w-md text-xs leading-relaxed text-[var(--color-ink-muted)]/80">
-              Визуал: команда или рабочий момент в офисе — деловой тон без штампованных корпоративных постановок.
-            </p>
           </FadeIn>
         </div>
       </section>
 
-      <section className="w-full px-4 py-20 sm:px-8 lg:px-12">
-        <FadeIn>
-          <h2 className="text-3xl font-bold tracking-tight text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-            Основные услуги
-          </h2>
-        </FadeIn>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {[
-            {
-              title: 'Договоры и сделки',
-              quote: 'Грамотно оформим правовые отношения, минимизируем риски',
-              line: 'Подготовка, экспертиза, сопровождение',
-              link: '/services/dogovory-i-sdelki',
-            },
-            {
-              title: 'Интеллектуальная собственность',
-              quote: 'Ваш продукт, бренд и контент — юридически защищённые активы',
-              line: 'ТМ, авторские права, лицензии, защита в интернете',
-              link: '/services/intellektualnaya-sobstvennost',
-            },
-            {
-              title: 'Legal Design',
-              quote: 'Документы, которые люди реально читают и выполняют',
-              line: 'Реинжиниринг, дизайн, оптимизация',
-              link: '/legal-design',
-            },
-          ].map((c, i) => (
-            <FadeIn key={c.title} delay={i * 0.06}>
-              <div className="flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-card)] transition hover:border-[var(--color-accent)]/30">
-                <h3 className="text-lg font-semibold text-[var(--color-ink)]">{c.title}</h3>
-                <p className="mt-3 text-[var(--color-ink-muted)]">«{c.quote}»</p>
-                <p className="mt-2 text-sm text-[var(--color-ink-muted)]">{c.line}</p>
-                <Link to={c.link} className="mt-auto pt-6 text-sm font-medium text-[var(--color-accent)] hover:underline">
-                  Подробнее →
-                </Link>
+      {/* Компания и основатель */}
+      <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div className={`${pagePad} py-16 sm:py-20 lg:py-24`}>
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-14">
+            <FadeIn className="lg:col-span-5">
+              <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-card)]">
+                <img
+                  src="/mark-toropov.png"
+                  alt="Марк Торопов, основатель и управляющий партнёр"
+                  className="aspect-[3/4] w-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </FadeIn>
-          ))}
-        </div>
-        <div className="mt-10 text-center">
-          <Link to="/services" className="font-medium text-[var(--color-accent)] hover:underline">
-            Все услуги →
-          </Link>
+            <FadeIn className="lg:col-span-7" delay={0.06}>
+              <h2
+                className="text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Торопов Прав
+              </h2>
+              <div className="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-ink-muted)]">
+                <p>
+                  Мы объединяем юристов по направлениям: договоры и сделки, интеллектуальная собственность, корпоративное
+                  право, споры,{' '}
+                  <Link to="/legal-design" className="font-medium text-[var(--color-accent)] underline-offset-2 hover:underline">
+                    Legal Design
+                  </Link>
+                  . Фокус — на задачах клиента и измеримом результате. Каждый специалист углубляется в отрасль — от event и
+                  digital до HoReCa и IT.
+                </p>
+              </div>
+              <h3
+                className="mt-10 text-2xl font-bold text-[var(--color-ink)]"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Об основателе
+              </h3>
+              <p className="mt-3 font-semibold text-[var(--color-ink)]">Марк Торопов — основатель и управляющий партнёр</p>
+              <div className="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-ink-muted)]">
+                <p>
+                  Юрист с более чем 7-летним опытом сопровождения бизнеса. Специализируется на работе с малым и средним
+                  бизнесом, IT- и digital-компаниями и корпоративными структурами.
+                </p>
+                <p>
+                  В практике — структурирование бизнеса, сопровождение сделок и инвестиций, переговоры и представительство в
+                  арбитражных судах. Сочетает классическую экспертизу с{' '}
+                  <Link to="/legal-design" className="font-medium text-[var(--color-accent)] underline-offset-2 hover:underline">
+                    Legal Design
+                  </Link>{' '}
+                  и ИИ для анализа и подготовки правовых позиций.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
-      <section className="border-y border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
-        <div className="w-full px-4 py-20 sm:px-8 lg:px-12">
+      {/* Отрасли — 2×2 крупные карточки */}
+      <section className="border-b border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
+        <div className={`${pagePad} py-16 sm:py-20 lg:py-24`}>
           <FadeIn>
-            <h2 className="text-3xl font-bold tracking-tight text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
+            <h2
+              className="max-w-3xl text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
               Знаем специфику вашей сферы
             </h2>
             <p className="mt-4 max-w-2xl text-lg text-[var(--color-ink-muted)]">
-              Не работаем со всем подряд. Специализируемся на бизнесе в конкретных отраслях — понимаем их процессы,
-              договоры и риски изнутри.
+              Не работаем со всем подряд. Специализируемся на бизнесе в конкретных отраслях — понимаем процессы, договоры и
+              риски изнутри.
             </p>
           </FadeIn>
-          <div className="mt-10 flex flex-wrap gap-2">
-            {industries.map((tag, i) => (
-              <FadeIn key={tag} delay={i * 0.03}>
-                <span className="inline-block rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm font-medium text-[var(--color-ink)]">
-                  {tag}
-                </span>
+          <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2">
+            {industryCards.map((card, i) => (
+              <FadeIn key={card.title} delay={i * 0.05}>
+                <div className="flex h-full min-h-[11rem] flex-col justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-[var(--shadow-card)] sm:min-h-[12rem] sm:p-10">
+                  <h3 className="text-xl font-bold text-[var(--color-ink)] sm:text-2xl" style={{ fontFamily: 'var(--font-display)' }}>
+                    {card.title}
+                  </h3>
+                  <ul className="mt-5 space-y-3 text-base leading-snug text-[var(--color-ink-muted)] sm:text-lg">
+                    {card.items.map((line) => (
+                      <li key={line} className="flex gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden />
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full px-4 py-20 sm:px-8 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
-          <FadeIn className="lg:col-span-5">
-            <div className="aspect-[4/5] max-w-md overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--color-border)] to-[var(--color-accent-soft)] lg:max-w-none">
-              <div className="flex h-full items-end p-8">
-                <p className="text-sm text-[var(--color-ink-muted)]">
-                  Визуал: офис или команда — нейтрально и по делу.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-          <FadeIn className="lg:col-span-7" delay={0.06}>
-            <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-              О компании
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[var(--color-ink-muted)]">
-              Мы сопровождаем средний бизнес: договоры, интеллектуальная собственность, споры, Legal Design. Юристы
-              работают по направлениям и знают отраслевую специфику — от event и digital до HoReCa и IT.
-            </p>
-            <Link to="/about" className="mt-6 inline-block font-medium text-[var(--color-accent)] hover:underline">
-              Подробнее о компании →
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
-
-      <section className="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className="w-full px-4 py-20 sm:px-8 lg:px-12">
+      <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div className={`${pagePad} py-16 sm:py-20`}>
           <FadeIn>
-            <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
+            <h2 className="text-3xl font-bold text-[var(--color-ink)] sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
               В цифрах
             </h2>
             <p className="mt-2 text-sm text-[var(--color-ink-muted)]">Показатели обновляются по мере согласования.</p>
@@ -179,11 +210,11 @@ export function Home() {
               { n: '8', d: 'Отраслей специализации' },
             ].map((x, i) => (
               <FadeIn key={x.n} delay={i * 0.05}>
-                <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-6 text-center shadow-[var(--shadow-card)]">
-                  <div className="text-3xl font-bold text-[var(--color-accent)]" style={{ fontFamily: 'var(--font-display)' }}>
+                <div className="min-h-[10rem] rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-8 text-center shadow-[var(--shadow-card)] sm:min-h-[11rem]">
+                  <div className="text-3xl font-bold text-[var(--color-accent)] sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
                     {x.n}
                   </div>
-                  <p className="mt-2 text-sm text-[var(--color-ink-muted)]">{x.d}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">{x.d}</p>
                 </div>
               </FadeIn>
             ))}
@@ -191,40 +222,50 @@ export function Home() {
         </div>
       </section>
 
-      <section className="w-full px-4 py-20 sm:px-8 lg:px-12">
-        <FadeIn>
-          <h2 className="text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
-            Прозрачно. Быстро. Без лишнего
-          </h2>
-        </FadeIn>
-        <div className="mt-10 space-y-4 text-[var(--color-ink-muted)]">
-          {[
-            'Заявка — опишите задачу, мы ответим в течение дня',
-            'Разбор — профильный юрист изучает ситуацию, стратегию согласовывает руководство',
-            'Работа — фиксированные сроки, понятный результат',
-            'Поддержка — остаётесь на связи после закрытия задачи',
-          ].map((line, i) => (
-            <FadeIn key={line} delay={i * 0.05} className="flex gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] px-5 py-4">
-              <span className="font-semibold text-[var(--color-accent)]">{i + 1}.</span>
-              <span>{line}</span>
-            </FadeIn>
-          ))}
+      {/* Процесс — 2×2 */}
+      <section className="bg-[var(--color-surface-elevated)]">
+        <div className={`${pagePad} py-16 sm:py-20 lg:py-24`}>
+          <FadeIn>
+            <h2
+              className="max-w-2xl text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Прозрачно. Быстро. Без лишнего
+            </h2>
+          </FadeIn>
+          <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2">
+            {processSteps.map((s, i) => (
+              <FadeIn key={s.title} delay={i * 0.06}>
+                <div className="flex h-full min-h-[13rem] flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-[var(--shadow-card)] sm:min-h-[14rem] sm:p-10">
+                  <span
+                    className="text-4xl font-medium tabular-nums leading-none text-[var(--color-accent)]/40"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                    aria-hidden
+                  >
+                    {s.n}.
+                  </span>
+                  <h3 className="mt-4 text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">{s.title}</h3>
+                  <p className="mt-3 flex-1 text-base leading-relaxed text-[var(--color-ink-muted)] sm:text-lg">{s.text}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="zayavka" className="border-t border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
-        <div className="w-full px-4 py-20 sm:px-8 lg:px-12">
+      <section id="zayavka" className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div className={`${pagePad} py-16 sm:py-20`}>
           <div className="w-full">
             <FadeIn>
-              <h2 className="text-center text-3xl font-bold text-[var(--color-ink)]" style={{ fontFamily: 'var(--font-display)' }}>
+              <h2 className="text-center text-3xl font-bold text-[var(--color-ink)] sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
                 Есть юридический вопрос?
               </h2>
-              <p className="mt-3 text-center text-[var(--color-ink-muted)]">
+              <p className="mt-3 text-center text-lg text-[var(--color-ink-muted)]">
                 Расскажите о задаче — ответим в течение рабочего дня
               </p>
             </FadeIn>
             <FadeIn className="mt-10" delay={0.08}>
-              <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-[var(--shadow-card)]">
+              <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-8 shadow-[var(--shadow-card)]">
                 <LeadForm />
               </div>
             </FadeIn>

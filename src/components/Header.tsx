@@ -130,9 +130,6 @@ export function Header() {
                 </AnimatePresence>
               </div>
 
-              <NavLink to="/about" className={navLinkClass}>
-                О компании
-              </NavLink>
               <NavLink to="/cases" className={navLinkClass}>
                 Кейсы
               </NavLink>
@@ -214,13 +211,6 @@ export function Header() {
               >
                 Legal Design
               </Link>
-              <NavLink
-                to="/about"
-                className="rounded-xl px-3 py-2.5 text-[15px] font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-accent-soft)]"
-                onClick={() => setMobileOpen(false)}
-              >
-                О компании
-              </NavLink>
               <NavLink
                 to="/cases"
                 className="rounded-xl px-3 py-2.5 text-[15px] font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-accent-soft)]"
