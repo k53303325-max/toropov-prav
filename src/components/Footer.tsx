@@ -27,9 +27,6 @@ export function Footer() {
           <Link className="text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]" to="/blog">
             Блог
           </Link>
-          <Link className="text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]" to="/politika-personalnyh-dannyh">
-            Персональные данные
-          </Link>
         </div>
         <div className="text-sm">
           <span className="font-semibold text-[var(--color-ink)]">Связь</span>

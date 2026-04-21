@@ -7,7 +7,6 @@ import { Home } from './pages/Home'
 import { LegalDesign } from './pages/LegalDesign'
 import { ServiceCategory } from './pages/ServiceCategory'
 import { ServiceTaskPage } from './pages/ServiceTaskPage'
-import { PrivacyPolicy } from './pages/PrivacyPolicy'
 import { Services } from './pages/Services'
 
 export default function App() {
@@ -20,7 +19,6 @@ export default function App() {
           <Route path="services/:slug" element={<ServiceCategory />} />
           <Route path="services" element={<Services />} />
           <Route path="legal-design" element={<LegalDesign />} />
-          <Route path="politika-personalnyh-dannyh" element={<PrivacyPolicy />} />
           <Route path="about" element={<Navigate to="/" replace />} />
           <Route path="cases" element={<Cases />} />
           <Route path="blog" element={<Blog />} />
