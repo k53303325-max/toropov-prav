@@ -106,28 +106,11 @@ export function Home() {
             </FadeIn>
             <FadeIn className="min-w-0" delay={0.06}>
               <h2
-                className="text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                Торопов Прав
-              </h2>
-              <div className="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-ink-muted)]">
-                <p>
-                  Мы объединяем юристов по направлениям: договоры и сделки, интеллектуальная собственность, корпоративное
-                  право, споры,{' '}
-                  <Link to="/legal-design" className="font-medium text-[var(--color-accent)] underline-offset-2 hover:underline">
-                    Legal Design
-                  </Link>
-                  . Фокус — на задачах клиента и измеримом результате. Каждый специалист углубляется в отрасль — от event и
-                  digital до HoReCa и IT.
-                </p>
-              </div>
-              <h3
-                className="mt-10 text-2xl font-bold text-[var(--color-ink)]"
+                className="text-2xl font-bold text-[var(--color-ink)] sm:text-3xl"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 Об основателе
-              </h3>
+              </h2>
               <p className="mt-3 font-semibold text-[var(--color-ink)]">Марк Торопов — основатель и управляющий партнёр</p>
               <div className="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-ink-muted)]">
                 <p>

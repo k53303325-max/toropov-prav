@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 
 type Props = {
   id?: string
@@ -72,14 +73,12 @@ export function LeadForm({ id, submitLabel = 'Отправить заявку', 
         />
         <label htmlFor="lead-pd-consent" className="text-sm leading-snug text-[var(--color-ink-muted)]">
           Я согласен на обработку персональных данных в соответствии с{' '}
-          <a
-            href="/politika-obrabotki-personalnyh-dannyh.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/politika-personalnyh-dannyh"
             className="font-medium text-[var(--color-accent)] underline underline-offset-2 hover:text-[var(--color-accent-hover)]"
           >
             Политикой
-          </a>
+          </Link>
           .
         </label>
       </div>
